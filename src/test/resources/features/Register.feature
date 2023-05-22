@@ -49,7 +49,6 @@ Feature: Registration Page
       | registration |         6 |
       | registration |         7 |
 
-  
   @TheUserClickNumpyNinjaLink
   Scenario: 4 The user click login button
     Given user is on registration page
