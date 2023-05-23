@@ -33,7 +33,8 @@ Feature: Registration Page
     Then warning message should display
 
   @UserNamePasswordTest
-  Scenario Outline: 3 Check Combination of Username and Password from "<sheetName>" rownumber <rownumber>
+     Scenario Outline: 3 Check Combination of Username and Password from sheetName rownumber   
+  #Scenario Outline: 3 Check Combination of Username and Password from "<sheetName>" rownumber <rownumber>
     Given user is on registration page
     When user enter userName from "<sheetName>" and rownumber <rownumber>
     Then verify Registration Status
@@ -64,5 +65,5 @@ Feature: Registration Page
   @TheUserClickLoginButton
   Scenario: 8  user click login button
     Given user is on registration page
-    #When user click login link to check successful registration
+    When user click login link to check successful registration
     Then user logged into website
