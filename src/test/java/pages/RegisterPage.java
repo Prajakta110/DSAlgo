@@ -137,6 +137,17 @@ public class RegisterPage
 		{
 			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/home");			
 		}
+		// Vimala Changes start
+		public void VerifyRegisterPageURL()
+		{
+			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/register");
+		}
+		
+		public void VerifySignInPageURL()
+		{
+			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/login");
+		}
+		// Vimala Changes end
 }
 	
 	

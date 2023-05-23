@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 import utils.LoggerLoad;
 
-public class LinkedlistPage {
+public class LinkedListPage {
 
 	WebDriver driver;
 	@FindBy(xpath="//a[@href='linked-list']")
@@ -28,7 +28,7 @@ public class LinkedlistPage {
 	
 	
 	
-	public LinkedlistPage(WebDriver driver) {
+	public LinkedListPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);	
 		LoggerLoad.info("LinkedList Constructor called");

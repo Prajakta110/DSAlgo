@@ -9,16 +9,16 @@ import pages.HomePage;
 import pages.RegisterPage;
 import pages.SignInPage;
 import utils.DriverFactory;
-import utils.ScreenShot;
+//import utils.ScreenShot;
 
-public class HomePageSD {
+public class HomeSD {
 	
 WebDriver driver;
 	
 	HomePage homePage;
 	RegisterPage registerPage;
 	SignInPage signIn;
-	ScreenShot ScreenShot;
+	//ScreenShot ScreenShot;
 	
 	@Before
 	public void Setup()
@@ -28,7 +28,7 @@ WebDriver driver;
 		homePage = new HomePage(driver);
 		registerPage = new RegisterPage(driver);
 		signIn = new SignInPage(driver);
-		ScreenShot = new ScreenShot(driver);
+		//ScreenShot = new ScreenShot(driver);
 		
 	}
 	
@@ -53,7 +53,7 @@ WebDriver driver;
 	    homePage.VerifyGetStartedButton();
 	}
 	
-
+	
 	@When("User clicks on Register")
 	public void User_clicks_on_Register() {
 		homePage.ClickOnRegisterBtn();

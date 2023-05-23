@@ -21,17 +21,17 @@ public class LandingSD {
 		landingPage = testContext.getPageObjectManager().getLandingPage();
 	}
 	
-	@Given("I am on DS algo landing page")
+	@Given("User on DS algo landing page")
 	public void i_am_on_ds_algo_landing_page() 
 	{
 	    landingPage.GoToLandingPage();
 	}
 
-	@When("I click on Get Started button")
-	public void i_click_on_get_started_button() 
-	{
+	@When("User click on Get Started button")
+	public void User_click_on_Get_started_button() {
 		landingPage.ClickOnGetStarted();
 	}
+	
 	
 	@Then("Verify Get Started button")
 	public void Verify_Get_Started_button() {

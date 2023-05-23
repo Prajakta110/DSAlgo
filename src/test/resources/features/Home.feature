@@ -38,7 +38,7 @@ Feature: Home Page tests
   #| name2 |     7 | Fail    |
   @homepagetests
   Scenario: Validate Get started Button Exist and enabled
-    Given I am on DS algo landing page
+    Given User on DS algo landing page
     Then Verify Get Started button
 
   @homepagetests

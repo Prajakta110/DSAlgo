@@ -11,6 +11,7 @@ import io.cucumber.java.en.When;
 import io.cucumber.messages.types.Tag;
 import pages.HomePage;
 import pages.LandingPage;
+import pages.LinkedListPage;
 import pages.LinkedlistPage;
 import utils.DriverFactory;
 
@@ -18,13 +19,13 @@ public class LinkedListSD {
 	
 	WebDriver driver;
 	
-	LinkedlistPage LinkedList;
+	LinkedListPage LinkedList;
 	
 	@Before
 	public void setup() {
 		
 		driver = DriverFactory.getDriver("chrome");
-		LinkedList = new LinkedlistPage(driver);
+		LinkedList = new LinkedListPage(driver);
 	}
 	
 	@When("Verify User is on Linked List Page")
@@ -34,7 +35,7 @@ public class LinkedListSD {
 
 	@When("user clicks get started button on LinkedList")
 	public void user_clicks_get_started_button_on_linked_list() {
-	    LandingPageSD.clickongetstartedbutton();
+	    //LandingPageSD.clickongetstartedbutton();
 	}
 
 	@When("User clicks get started btn on LinkedList")
