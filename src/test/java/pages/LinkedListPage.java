@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import managers.FileReaderManager;
 import utils.LoggerLoad;
 
 public class LinkedListPage {
@@ -35,15 +36,15 @@ public class LinkedListPage {
 	}
 	
 	public void VerifyLinkedlistUrl() {
-		Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/linked-list/");
+		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getLinkedListUrl());
 	}
 	
 	public void VerifyLinkedlistIntroUrl() {
-		Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/linked-list/introduction/");
+		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getLinkedListIntroUrl());
 	}
 	
 	public void VerifyLinkedlistTryHeredUrl() {
-		Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/tryEditor");
+		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
 	}
 	
 	public void VerifyLinkedlistChildUrl(String url) {
