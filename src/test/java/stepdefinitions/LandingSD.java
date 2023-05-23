@@ -32,6 +32,11 @@ public class LandingSD {
 	{
 		landingPage.ClickOnGetStarted();
 	}
+	
+	@Then("Verify Get Started button")
+	public void Verify_Get_Started_button() {
+	    homePage.VerifyGetStartedButton();
+	}
 
 	@Then("DS algo home page is opened")
 	public void ds_algo_home_page_is_opened() 
