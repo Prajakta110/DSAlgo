@@ -195,4 +195,13 @@ public class ConfigFileReader {
 		else 
 			throw new RuntimeException("loginBtnText not specified in the Configuration.properties file.");
 	}
+	
+	public String getRegisterBtnText() 
+	{
+		String text = properties.getProperty("registerBtnText");
+		if(text != null) 
+			return text;
+		else 
+			throw new RuntimeException("registerBtnText not specified in the Configuration.properties file.");
+	}
 }

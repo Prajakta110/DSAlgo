@@ -48,77 +48,55 @@ public class HomePage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	/*public void GoToHomePage()
-	{
-		driver.navigate().to(FileReaderManager.getInstance().getConfigReader().getHomeUrl());
-		Log.info("User navigated to Home Page");
-	}
+	/*
+	 * public void GoToHomePage() {
+	 * driver.navigate().to(FileReaderManager.getInstance().getConfigReader().
+	 * getHomeUrl()); Log.info("User navigated to Home Page"); }
+	 * 
+	 * public void VerifyHomePageURL() { Assert.assertEquals(driver.getCurrentUrl(),
+	 * FileReaderManager.getInstance().getConfigReader().getHomeUrl());
+	 * Log.info("Verifies that user is on Home Page"); }
+	 * 
+	 * public void VerifyNotSignedIn() { Assert.assertEquals(loginBtn.getText(),
+	 * FileReaderManager.getInstance().getConfigReader().getLoginBtnText());
+	 * Log.info("Verifies that user is not logged in"); }
+	 * 
+	 * public void VerifySignedIn() {
+	 * Assert.assertEquals(signedInUser.getText().toLowerCase(),
+	 * FileReaderManager.getInstance().getConfigReader().getDSAlgoUserName());
+	 * Log.info("Verifies that user is logged in"); }
+	 * 
+	 * public void ClickOnSignIn() { loginBtn.click();
+	 * Log.info("User clicked on Sign in"); }
+	 * 
+	 * public void ClickOnDataStructures() { dataStructureBtn.click();
+	 * Log.info("User clicked on Get Started button for Data Structure"); }
+	 * 
+	 * public void ClickOnArray() { arrayBtn.click();
+	 * Log.info("User clicked on Get Started button for Array"); }
+	 * 
+	 * public void VerifyLoginErrorMsg() { Assert.assertEquals(errorMsg.getText(),
+	 * FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
+	 * Log.info("Verified the message that user is not logged in"); }
+	 * 
+	 * public void VerifyLoginSuccessMsg() { Assert.assertEquals(errorMsg.getText(),
+	 * FileReaderManager.getInstance().getConfigReader().getValidLoginMsg());
+	 * Log.info("Verified the success message for log in"); }
+	 * 
+	 * public void ClickOnSignOutBtn() { signOutBtn.click();
+	 * Log.info("User clicked on Sign out"); }
+	 * 
+	 * public void VerifyLogoutSuccessMsg() {
+	 * Assert.assertEquals(errorMsg.getText(),
+	 * FileReaderManager.getInstance().getConfigReader().getLogoutSuccessMsg());
+	 * Log.info("Verified the success message for log out"); }
+	 */
+	
+	
 
 	public void VerifyHomePageURL()
 	{
 		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getHomeUrl());
-		Log.info("Verifies that user is on Home Page");
-	}
-	
-	public void VerifyNotSignedIn()
-	{
-		Assert.assertEquals(loginBtn.getText(), FileReaderManager.getInstance().getConfigReader().getLoginBtnText());
-		Log.info("Verifies that user is not logged in");
-	}
-	
-	public void VerifySignedIn()
-	{
-		Assert.assertEquals(signedInUser.getText().toLowerCase(), FileReaderManager.getInstance().getConfigReader().getDSAlgoUserName());
-		Log.info("Verifies that user is logged in");
-	}
-	
-	public void ClickOnSignIn()
-	{
-		loginBtn.click();
-		Log.info("User clicked on Sign in");
-	}
-	
-	public void ClickOnDataStructures()
-	{
-		dataStructureBtn.click();
-		Log.info("User clicked on Get Started button for Data Structure");
-	}
-	
-	public void ClickOnArray()
-	{
-		arrayBtn.click();
-		Log.info("User clicked on Get Started button for Array");
-	}
-	
-	public void VerifyLoginErrorMsg()
-	{
-		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
-		Log.info("Verified the message that user is not logged in");
-	}
-	
-	public void VerifyLoginSuccessMsg()
-	{
-		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getValidLoginMsg());
-		Log.info("Verified the success message for log in");
-	}
-	
-	public void ClickOnSignOutBtn()
-	{
-		signOutBtn.click();
-		Log.info("User clicked on Sign out");
-	}
-	
-	public void VerifyLogoutSuccessMsg()
-	{
-		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getLogoutSuccessMsg());
-		Log.info("Verified the success message for log out");
-	}*/
-	
-	
-
-	public void VerifyHomePageURL()
-	{
-		Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/home");
 	}
 	
 	public void VerifyGetStartedButton() {
@@ -134,7 +112,7 @@ public class HomePage {
 	
 	public void Register() {
 		
-		Assert.assertEquals(registerBtn.getText(), "register");
+		Assert.assertEquals(registerBtn.getText(), FileReaderManager.getInstance().getConfigReader().getRegisterBtnText());
 	
 	}
 	
@@ -145,13 +123,13 @@ public class HomePage {
 	
 	public void SignIn() {
 		
-		Assert.assertEquals(signInBtn.getText(), "Sign In");
+		Assert.assertEquals(signInBtn.getText(), FileReaderManager.getInstance().getConfigReader().getLoginBtnText());
 	
 	}
 
 	public void VerifyNotLoggedIn()
 	{
-		Assert.assertEquals(loginBtn.getText(), "Sign in");
+		Assert.assertEquals(loginBtn.getText(), FileReaderManager.getInstance().getConfigReader().getLoginBtnText());
 	}
 
 	public void ClickOnDataStructures()
@@ -166,7 +144,7 @@ public class HomePage {
 	
 	public void validateErrorMsg()
 	{
-		Assert.assertEquals(errorMsg.getText(), "You are not logged in");
+		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
 		
 	}
 	
@@ -180,7 +158,7 @@ public class HomePage {
 	}
 	
 	public void ValidateArrayErrorMsg() {
-		Assert.assertEquals(errorMsg.getText(), "You are not logged in");
+		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
 	}
 	
 	public void ClickonLinkedListGetStartedBtn() {
@@ -188,7 +166,7 @@ public class HomePage {
 	}
 	
 	public void ValidateLinkedListErrorMsg() {
-		Assert.assertEquals(errorMsg.getText(), "You are not logged in");
+		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
 	}
 	
 	public void ClickonStackGetStartedBtn() {
