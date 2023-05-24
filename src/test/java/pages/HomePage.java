@@ -15,12 +15,16 @@ public class HomePage {
 	WebDriver driver;
 
 	
-	 //@FindBy(xpath = "//a[@href='/login']") WebElement loginBtn;
-	 
-	 //@FindBy(xpath = "//a[@href='data-structures-introduction']") WebElement dataStructureBtn;
-	
-	 @FindBy(xpath = "//a[@href='array']") WebElement arrayBtn;
-	
+
+	@FindBy(xpath = "//a[@href='/login']") WebElement loginBtn;
+	@FindBy(xpath = "//a[@href='data-structures-introduction']") WebElement dataStructureBtn;
+	@FindBy(xpath = "//a[@href='array']") WebElement arrayBtn;
+	@FindBy(xpath = "//a[@href='stack']") WebElement stackBtn;
+	@FindBy(xpath = "//div[contains(@class, 'alert')]") WebElement errorMsg;
+	@FindBy(xpath = "//a[@href='']") WebElement signedInUser;
+	@FindBy(xpath = "//a[@href='/logout']") WebElement signOutBtn;
+	@FindBy(linkText="Register")WebElement registrationLink;
+
 	//@FindBy(xpath = "//div[contains(@class, 'alert')]") WebElement errorMsg;
 	
 	@FindBy(xpath = "//a[@href='']") WebElement signedInUser;
@@ -158,9 +162,21 @@ public class HomePage {
 		dataStructuresDropdown.click();
 	}
 
+
 	public void validateErrorMsg() {
+    Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
+  }
+
+	public void VerifyLoginErrorMsg()
+	{
 		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
 
+	}
+  
+  public void ClickOnStack()
+	{
+		stackBtn.click();
+		Log.info("User clicked on Get Started button for Stack");
 	}
 
 	public void ClickOnArray() {
@@ -211,5 +227,10 @@ public class HomePage {
 
 	public void VerifyLoginErrorMsg() {
 		Assert.assertEquals(errorMsg.getText(), "You are not logged in");
+	}
+	
+	public void ClickRegistrationLink()
+	{
+		registrationLink.click();
 	}
 }

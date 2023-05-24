@@ -19,8 +19,10 @@
 @DataStructuresPage @DSAlgo
 Feature: Data Structures Page
 
-  Background: User is logged in
+  Background: User is on Home Page
     Given User is on DS Algo Home page
+   
+  Scenario: User is logged in
     When User clicks on Sign in button on Home page
     And User enters valid username and password
     And User clicks on Sign in
