@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import context.TestContext;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -82,6 +83,16 @@ public class SignInSD {
 		Log.error(ex.getMessage());
 		Log.endTestCase();
 		Screenshots.CaptureScreenshot(testContext.getWebDriverManager().getDriver());
+	}
+	
+	@And("when user click enter")
+	public void when_user_click_enter() {
+		signinPage.clickSubmit();	
+	}
+	
+	@Then("user should be able to see logged in message")
+	public void user_should_be_able_to_see_logged_in_message() {
+		signinPage.ValidateloggedInMsg();
 	}
 
 }

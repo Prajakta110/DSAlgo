@@ -13,10 +13,19 @@ public class SignInPage {
 
 	WebDriver driver;
 	
-	@FindBy(name = "username") WebElement userName;
+	//@FindBy(name = "username") WebElement userName;
 	@FindBy(name = "password") WebElement password;
 	@FindBy(xpath = "//input[@value='Login']") WebElement loginButton;
 	@FindBy(xpath = "//div[contains(@class,'alert')]") WebElement errorMessage;
+	
+	//vimala start
+	@FindBy(xpath = "//a[@href='/login']") WebElement signInBtn;
+	@FindBy(xpath = "//input[@name='username']")WebElement userName;
+	@FindBy(xpath = "//input[@name='password']")WebElement userPassword;
+	@FindBy(xpath = "//input[@value='Login']")WebElement clicksubmit;
+	@FindBy(xpath = "//a[@href='/logout']")WebElement signout;
+	@FindBy(xpath = "//div[@class='alert alert-primary']") WebElement LoggedInMsg;
+	//vimala end
 	
 	public SignInPage(WebDriver driver)
 	{
@@ -58,4 +67,17 @@ public class SignInPage {
 				+ "Expected message - " + message + ", Actual message - " + errorMessage.getText());
 		
 	}
+	// Vimala Changes start
+	public void VerifySignInPageURL()
+	{
+		Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/login");
+	}
+	public void clickSubmit() {
+		clicksubmit.click();
+	}
+	
+	public void ValidateloggedInMsg() {
+		Assert.assertEquals(LoggedInMsg.getText(), "You are logged in");
+	}
+	// Vimala Changes end
 }

@@ -43,7 +43,7 @@ public class ArraySD {
 		try
 		{
 			Log.startTestCase();
-			homePage.GoToHomePage();
+		homePage.GoToHomePage();
 		}
 		catch(Exception ex)
 		{

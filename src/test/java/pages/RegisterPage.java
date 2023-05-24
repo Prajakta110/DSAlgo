@@ -147,4 +147,17 @@ public class RegisterPage
 			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getHomeUrl());
 			Log.info("Registration Fail, user is on registration page.");	
 		}
+
+		// Vimala Changes start
+		public void VerifyRegisterPageURL()
+		{
+			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/register");
+		}
+		
+		public void VerifySignInPageURL()
+		{
+			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/login");
+		}
+		// Vimala Changes end
+
 }

@@ -213,6 +213,40 @@ public class ConfigFileReader {
 			throw new RuntimeException("loginBtnText not specified in the Configuration.properties file.");
 	}
 	
+
+	public String getTryEditorUrl() 
+	{
+		String text = properties.getProperty("editorPageUrl");
+		if(text != null) 
+			return text;
+		else 
+			throw new RuntimeException("editorPageUrl not specified in the Configuration.properties file.");
+	}
+	public String getLinkedListUrl() 
+	{
+		String text = properties.getProperty("linklisturl");
+		if(text != null) 
+			return text;
+		else 
+			throw new RuntimeException("linklisturl not specified in the Configuration.properties file.");
+	}
+	public String getLinkedListIntroUrl() 
+	{
+		String text = properties.getProperty("linklistintrourl");
+		if(text != null) 
+			return text;
+		else 
+			throw new RuntimeException("linklistintrourl not specified in the Configuration.properties file.");
+	}
+	public String getRegisterBtnText() 
+	{
+		String text = properties.getProperty("registerBtnText");
+		if(text != null) 
+			return text;
+		else 
+			throw new RuntimeException("registerBtnText not specified in the Configuration.properties file.");
+	}
+
 	public String getStackUrl() 
 	{
 		String url = properties.getProperty("stackPageUrl");
