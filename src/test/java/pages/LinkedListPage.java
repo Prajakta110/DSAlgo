@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import managers.FileReaderManager;
-import utils.LoggerLoad;
+//import utils.LoggerLoad;
 
 public class LinkedListPage {
 
@@ -32,7 +32,7 @@ public class LinkedListPage {
 	public LinkedListPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);	
-		LoggerLoad.info("LinkedList Constructor called");
+		//LoggerLoad.info("LinkedList Constructor called");
 	}
 	
 	public void VerifyLinkedlistUrl() {
