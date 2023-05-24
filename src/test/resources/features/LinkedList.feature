@@ -51,7 +51,7 @@ Feature: LinkedListGetStarted
   @integration
   Scenario Outline: Verify Linked List Sub Link Url "<url>" Try Here Editor Button
     Given User launches linkedlist suburl "<url>"
-    When User clicks on Try Here button
+    When User clicks on try here button
     Then Verify Try Here button takes to editor Url
     
     Examples: 

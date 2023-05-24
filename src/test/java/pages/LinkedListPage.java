@@ -43,8 +43,8 @@ public class LinkedListPage {
 		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getLinkedListIntroUrl());
 	}
 	
-	public void VerifyLinkedlistTryHeredUrl() {
-		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
+	public void VerifyLinkedlistTryHereUrl() {
+		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getTryEditorUrl());
 	}
 	
 	public void VerifyLinkedlistChildUrl(String url) {

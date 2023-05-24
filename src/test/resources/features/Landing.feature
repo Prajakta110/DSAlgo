@@ -21,6 +21,6 @@ Feature: Check functionality of Get Started button
 
   @GetStarted01
   Scenario: Check Get Started button click
-    Given I am on DS algo landing page
-    When I click on Get Started button
-    Then DS algo home page is opened
+    Given User is on DS algo landing page
+    When User clicks on Get Started button on Landing Page
+    Then User is navigated to DS algo home page

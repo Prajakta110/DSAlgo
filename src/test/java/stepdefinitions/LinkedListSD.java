@@ -2,31 +2,31 @@ package stepdefinitions;
 
 import org.openqa.selenium.WebDriver;
 
-import io.cucumber.java.Before;
-import io.cucumber.java.de.Wenn;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
+import context.TestContext;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.messages.types.Tag;
-import pages.HomePage;
-import pages.LandingPage;
 import pages.LinkedListPage;
-import pages.LinkedlistPage;
-import utils.DriverFactory;
 
 public class LinkedListSD {
 	
+	TestContext testContext;
 	WebDriver driver;
 	
 	LinkedListPage LinkedList;
 	
-	@Before
-	public void setup() {
-		
-		driver = DriverFactory.getDriver("chrome");
-		LinkedList = new LinkedListPage(driver);
+	public LinkedListSD(TestContext context)
+	{
+		testContext = context;
+		driver = testContext.getWebDriverManager().getDriver();
+		LinkedList = testContext.getPageObjectManager().getLinkedListPage();
 	}
+	
+	
+	//public void setup() {
+		
+		//driver = DriverFactory.getDriver("chrome");
+		//LinkedList = new LinkedListPage(driver);
+	//}
 	
 	@When("Verify User is on Linked List Page")
 	public void verify_user_is_on_linked_list_page() {
@@ -63,14 +63,14 @@ public class LinkedListSD {
 		LinkedList.LaunchSubUrl(url);
 	}
 	
-	@When("User clicks on Try Here button")
-	public void user_clicks_on_try_here_button() {
+	@When("User clicks on try here button")
+	public void user_clicks_on_tryhere_button() {
 		LinkedList.tryHereBtn();
 	}
 	
 	@Then("Verify Try Here button takes to editor Url")
 	public void Verify_Linked_list_try_here_button() {
-		LinkedList.VerifyLinkedlistTryHeredUrl();
+		LinkedList.VerifyLinkedlistTryHereUrl();
 	}
 	
 	@Then("Verify linked list introduction link")

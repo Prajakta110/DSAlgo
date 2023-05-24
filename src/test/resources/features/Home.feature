@@ -38,41 +38,42 @@ Feature: Home Page tests
   #| name2 |     7 | Fail    |
   @homepagetests
   Scenario: Validate Get started Button Exist and enabled
-    Given User on DS algo landing page
-    Then Verify Get Started button
+    Given User is on DS algo landing page
+    When User clicks on Get Started button on Landing Page 
+    Then User is navigated to DS algo home page
 
   @homepagetests
   Scenario: LandingPage
-    Given User on DS algo landing page
-    When User click on Get Started button
+    Given User is on DS algo landing page
+    When User clicks on Get Started button on Landing Page
     Then DS algo home page is opened
     And Verify user is not logged in
 
   @homepagetests
   Scenario: ClickRegister
-    Given User on DS algo landing page
-    When User click on Get Started button
+    Given User is on DS algo landing page
+    When User clicks on Get Started button on Landing Page
     And User clicks on Register
     Then User should be directed to Register page
 
   @homepagetests
   Scenario: SignIn
-    Given User on DS algo landing page
-    When User click on Get Started button
+    Given User is on DS algo landing page
+    When User clicks on Get Started button on Landing Page
     And User clicks on SignIn
     Then User should be directed to SignIn Page
 
   @homepagetests
   Scenario: DataStructures
-    Given User on DS algo landing page
-    When User click on Get Started button
+    Given User is on DS algo landing page
+    When User clicks on Get Started button on Landing Page
     And User Clicks on Data Structure Drop Down
     Then user should be able to view the Drop Down
 
   @homepagetests
   Scenario Outline: HomePage DataStructure Links Validation
-    Given User on DS algo landing page
-    When User click on Get Started button
+    Given User is on DS algo landing page
+    When User clicks on Get Started button on Landing Page
     And User clicks on HomePage DataStructure "<linkname>"
     Then user should be able to view the error msg
 
@@ -88,8 +89,8 @@ Feature: Home Page tests
 
   @homepageDataStructureDropDown
   Scenario Outline: HomePage DataStructure DropDown Validation
-    Given User on DS algo landing page
-    When User click on Get Started button
+    Given User is on DS algo landing page
+    When User clicks on Get Started button on Landing Page
     And User Clicks on Data Structure Drop Down
     And User clicks on HomePage DataStructure DropDown "<linkname>"
     Then user should be able to view the error msg

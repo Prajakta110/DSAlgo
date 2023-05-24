@@ -2,10 +2,12 @@ package stepdefinitions;
 
 import org.openqa.selenium.WebDriver;
 
+import context.TestContext;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
+import pages.LinkedListPage;
 import pages.RegisterPage;
 import pages.SignInPage;
 import utils.DriverFactory;
@@ -13,28 +15,38 @@ import utils.DriverFactory;
 
 public class HomeSD {
 	
-WebDriver driver;
+	WebDriver driver;
 	
 	HomePage homePage;
 	RegisterPage registerPage;
 	SignInPage signIn;
 	//ScreenShot ScreenShot;
 	
-	@Before
-	public void Setup()
-	{
-		driver = DriverFactory.getDriver("chrome");
+	TestContext testContext;
 	
-		homePage = new HomePage(driver);
-		registerPage = new RegisterPage(driver);
-		signIn = new SignInPage(driver);
-		//ScreenShot = new ScreenShot(driver);
-		
+	public HomeSD(TestContext context)
+	{
+		testContext = context;
+		driver = testContext.getWebDriverManager().getDriver();
+		homePage = testContext.getPageObjectManager().getHomePage();
+		registerPage = testContext.getPageObjectManager().getRegistrationPage();
+		signIn = testContext.getPageObjectManager().getSignInPage();
 	}
+//	@Before
+//	public void Setup()
+//	{
+//		driver = DriverFactory.getDriver("chrome");
+//	
+//		homePage = new HomePage(driver);
+//		registerPage = new RegisterPage(driver);
+//		signIn = new SignInPage(driver);
+//		//ScreenShot = new ScreenShot(driver);
+//		
+//	}
 	
 	@Then("User Launches Home Page")
 	public void user_home_page_is_opened() {
-		driver.get("https://dsportalapp.herokuapp.com/home");
+		homePage.GoToHomePage();
 	}
 	
 	@Then("DS algo home page is opened")
@@ -48,10 +60,10 @@ WebDriver driver;
 	}
 		
 	
-	@Then("Verify Get Started button")
-	public void Verify_Get_Started_button() {
-	    homePage.VerifyGetStartedButton();
-	}
+//	@Then("Verify Get Started button")
+//	public void Verify_Get_Started_button() {
+//	    homePage.VerifyGetStartedButton();
+//	}
 	
 	
 	@When("User clicks on Register")

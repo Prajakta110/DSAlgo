@@ -15,6 +15,7 @@ public class PageObjectManager {
 	private RegisterPage registerPage;
 	private EditorPage editorPage;
 	private PracticePage practicePage;
+	private LinkedListPage linkedlistPage;
 	
 	public PageObjectManager(WebDriver driver) 
 	{
@@ -59,6 +60,11 @@ public class PageObjectManager {
 	public PracticePage getPracticePage()
 	{
 		return (practicePage == null) ? practicePage = new PracticePage(driver) : practicePage;
+	}
+	
+	public LinkedListPage getLinkedListPage()
+	{
+		return (linkedlistPage == null) ? linkedlistPage = new LinkedListPage(driver) : linkedlistPage;
 	}
 
 }
