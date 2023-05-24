@@ -10,7 +10,7 @@ import enums.BrowserType;
 
 public class ConfigFileReader {
 
-	private Properties properties;
+	private static Properties properties;
 	private final String propertyFilePath= "src/test/resources/configs/Configuration.properties";
 
 	public ConfigFileReader()
@@ -115,7 +115,7 @@ public class ConfigFileReader {
 			throw new RuntimeException("questionPageUrl not specified in the Configuration.properties file.");
 	}
 	
-	public String getExcelPath() 
+	public static String getExcelPath() 
 	{
 		String path = properties.getProperty("excelPath");
 		if(path != null) 
@@ -177,6 +177,14 @@ public class ConfigFileReader {
 		else 
 			throw new RuntimeException("invalidLoginMsg not specified in the Configuration.properties file.");
 	}
+	// Signin URL
+		public static String loginPage() {
+			String loginurl = properties.getProperty("loginurl");
+			if (loginurl != null)
+				return loginurl;
+			else
+				throw new RuntimeException("login not specified in the Config.properties file");
+		}
 	
 	public String getLogoutSuccessMsg() 
 	{
@@ -195,4 +203,59 @@ public class ConfigFileReader {
 		else 
 			throw new RuntimeException("loginBtnText not specified in the Configuration.properties file.");
 	}
-}
+	
+	// Registration URL
+		public static String registerPageURL() {
+			String registerurl = properties.getProperty("registerpageurl");
+			if (registerurl != null)
+				return registerurl;
+			else
+				throw new RuntimeException("registerpageurl not specified in the Config.properties file");
+		}
+	public static String tryEditorURL() {
+		String tryeditorurl = properties.getProperty("tryeditorurl");
+		if (tryeditorurl != null)
+			return tryeditorurl;
+		else
+			throw new RuntimeException("tryeditorurl not specified in the Configuration.properties file.");
+	}
+
+	public static String geturl(String pagename) {
+		String url = properties.getProperty(pagename);
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException(pagename + " url not specified in the Configuration.properties file.");
+	}
+	public static String tryURL(String pagename) {
+		String url = properties.getProperty(pagename);
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException(pagename + "url not specified in the Configuration.properties file.");
+	}
+	public static String getEditorUrl() {
+		String editorurl = properties.getProperty("editorurl");
+		if (editorurl != null)
+			return editorurl;
+		else
+			throw new RuntimeException("Editor url is not specified in the Configuration.properties file.");
+	}
+	// Tree
+		public static String getTreeUrl() {
+			String treeurl = properties.getProperty("treeurl");
+			if (treeurl != null)
+				return treeurl;
+			else
+				throw new RuntimeException("tree url not specified in the Configuration.properties file.");
+		}
+		public static String gettryhereurl() {
+			String tryhereurl = properties.getProperty("tryhereurl");
+			if (tryhereurl != null)
+				return tryhereurl;
+			else
+				throw new RuntimeException("tryhereurl url not specified in the Configuration.properties file.");
+		}
+	}
+
+

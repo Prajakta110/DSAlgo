@@ -15,6 +15,7 @@ public class PageObjectManager {
 	private RegisterPage registerPage;
 	private EditorPage editorPage;
 	private PracticePage practicePage;
+	private TreePage treePage;
 	
 	public PageObjectManager(WebDriver driver) 
 	{
@@ -60,5 +61,9 @@ public class PageObjectManager {
 	{
 		return (practicePage == null) ? practicePage = new PracticePage(driver) : practicePage;
 	}
-
+	public TreePage getTreePage()
+	{
+		return (treePage == null) ? treePage = new TreePage(driver) : treePage;
+	}
+	
 }
