@@ -20,9 +20,10 @@
 Feature: Stack Page
   I want to use this template for my feature file
 
-	Background: User is logged in
-	#Scenario: User is logged in
-    Given User is on DS Home page
+	Background: User is on Home Page
+		Given User is on DS Home page
+		
+	Scenario: User is logged in
     When User clicks on Signin button on Home page
     And User enters valid username and pwd
     And User clicks on Signin
@@ -40,20 +41,20 @@ Feature: Stack Page
     When User clicks on Operations in Stack link
     Then User should be redirected to Opeartions in Stack page
 
-  #@NavigateToImplementaionPage
-  #Scenario: 3 User navigate to implementation page
+  @NavigateToImplementaionPage
+  Scenario: 3 User navigate to implementation page
     Given User is on Operations-in-stack page
     When User clicks on implementation link
     Then User should redirect to implementation page
 
-  #@NavigateToapplicationPage
-  #Scenario: User navigate to application page
+  @NavigateToapplicationPage
+  Scenario: User navigate to application page
     Given User is on  implentation page
     When User clicks Application link
     Then User should redirect to Application page
 
-  #@NavigateTotryEditorPage
-  #Scenario: User navigate to tryEditor Page
+  @NavigateTotryEditorPage
+  Scenario: User navigate to tryEditor Page
     Given User is on Application page
     When User Clicks on Try here>>>
     Then User should navigate to tryEditor Page

@@ -7,9 +7,9 @@ import org.openqa.selenium.WebDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import managers.FileReaderManager;
 import pages.RegisterPage;
 import pages.SignInPage;
-import readers.ExcelReader;
 import context.TestContext;
 import pages.HomePage;
 import utilities.HandleExceptions;
@@ -19,12 +19,10 @@ public class RegisterSD
 {
 	WebDriver driver;	
 	RegisterPage registerPage;
-	ExcelReader excelReader;
-	String errorMessage;
+	//String errorMessage;
 	SignInPage signinPage;
 	TestContext testContext;
 	HomePage homePage;
-	
 	
 	public RegisterSD(TestContext context)
 	{
@@ -32,7 +30,6 @@ public class RegisterSD
 		homePage = testContext.getPageObjectManager().getHomePage();
 		signinPage = testContext.getPageObjectManager().getSignInPage();
 		registerPage = testContext.getPageObjectManager().getRegistrationPage();
-		excelReader=new ExcelReader();		
 	}
 	
 	@Given("Ds Algo  portal home page")
@@ -54,8 +51,7 @@ public class RegisterSD
 	{	
 		try
 		{
-			registerPage.GoToHomePage();
-			registerPage.ClickRegistrationLink();
+			homePage.ClickRegistrationLink();
 		}
 		catch(Exception ex)
 		{
@@ -228,10 +224,10 @@ public class RegisterSD
 	{
 		try
 		{
-			Map<String, String>testdata=excelReader.ReadExcelFile(sheetName).get(rownumber);
+			Map<String, String> testdata = FileReaderManager.getInstance().getExcelReader().ReadExcelFile(sheetName).get(rownumber);
 			registerPage.validateUser(testdata.get("UserName"),testdata.get("Password"),testdata.get("Confirmpwd"),testdata.get("Status"));
 			//registerPage.ClickRegistrationButton();
-			errorMessage=testdata.get("expectedmessage");
+			//errorMessage=testdata.get("expectedmessage");
 		}
 		catch(Exception ex)
 		{
@@ -244,6 +240,7 @@ public class RegisterSD
 	{	
 		try
 		{
+			registerPage.ClickRegistrationButton();
 			homePage.VerifyLoginSuccessMsg();
 			Log.endTestCase();
 		}

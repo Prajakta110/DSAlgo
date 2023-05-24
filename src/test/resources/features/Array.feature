@@ -20,16 +20,22 @@
 Feature: Title of your feature
   I want to use this template for my feature file
 
-  Background: User is logged in
+  Background: User is on Home Page
     Given User is on DS Algo Home page
-    When User clicks on Sign in button on Home page
+    #When User clicks on Sign in button on Home page
+    #And User enters valid username and password
+    #And User clicks on Sign in
+    #Then User shoild be able to see the logged in message
+
+	Scenario: User is logged in
+		When User clicks on Sign in button on Home page
     And User enters valid username and password
     And User clicks on Sign in
     Then User shoild be able to see the logged in message
-
+    
   @ArrayScenario01
   Scenario: User is able to navigate to Array page
-    Given User is on DS Algo Home page
+    #Given User is on DS Algo Home page
     When User clicks on Get Started button for Array
     Then User should be redirected to Array page
 
