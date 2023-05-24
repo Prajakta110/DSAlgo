@@ -78,6 +78,23 @@ public class ConfigFileReader {
 			throw new RuntimeException("homeUrl not specified in the Configuration.properties file.");
 	}
 	
+	public String getRegisterUrl() 
+	{
+		String url = properties.getProperty("registerPageurl");
+		if(url != null) 
+			return url;
+		else 
+			throw new RuntimeException("registerPageUrl not specified in the Configuration.properties file.");
+	}	
+	
+	public String getLoginUrl() 
+	{
+		String url = properties.getProperty("loginUrl");
+		if(url != null) 
+			return url;
+		else 
+			throw new RuntimeException("loginUrl not specified in the Configuration.properties file.");
+	}
 
 	public String getArrayPageUrl() 
 	{
@@ -196,6 +213,7 @@ public class ConfigFileReader {
 			throw new RuntimeException("loginBtnText not specified in the Configuration.properties file.");
 	}
 	
+
 	public String getTryEditorUrl() 
 	{
 		String text = properties.getProperty("editorPageUrl");
@@ -228,4 +246,41 @@ public class ConfigFileReader {
 		else 
 			throw new RuntimeException("registerBtnText not specified in the Configuration.properties file.");
 	}
+
+	public String getStackUrl() 
+	{
+		String url = properties.getProperty("stackPageUrl");
+		if(url != null) 
+			return url;
+		else 
+			throw new RuntimeException("stackUrl not specified in the Configuration.properties file.");
+	}	
+	
+	public String getOperationInStackUrl() 
+	{
+		String url = properties.getProperty("operationinstackpageUrl");
+		if(url != null) 
+			return url;
+		else 
+			throw new RuntimeException("operationInStackUrl not specified in the Configuration.properties file.");
+	}	
+	
+	public String getImplimentationUrl() 
+	{
+		String url = properties.getProperty("implementationUrl");
+		if(url != null) 
+			return url;
+		else 
+			throw new RuntimeException("implementationUrl not specified in the Configuration.properties file.");
+	}	
+	
+	public String getstackApplicationUrl() 
+	{
+		String url = properties.getProperty("stackapplicationPageUrl");
+		if(url != null) 
+			return url;
+		else 
+			throw new RuntimeException("stackapplicationPageUrl not specified in the Configuration.properties file.");
+	}	
+	
 }

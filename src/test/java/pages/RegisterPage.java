@@ -6,14 +6,20 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
-import utils.LoggerLoad;
+import context.TestContext;
+import managers.FileReaderManager;
+import utilities.Log;
 
 public class RegisterPage
 {
 		WebDriver driver;
 		Actions action;
-		
+		//TestContext testContext;		
+		//HomePage homePage;
+		//SignInPage signinPage;
+		//RegisterPage registerPage;
+		String output;
+			
 		@FindBy(linkText="Register")WebElement registratioLink;
 		@FindBy(xpath="//input[@value='Register']")WebElement registrationButton;
 		@FindBy(name="username")WebElement userNametextBox;
@@ -32,17 +38,24 @@ public class RegisterPage
 		public RegisterPage(WebDriver driver)
 		{	
 			this.driver = driver;
+			Log.info("We are in Register page constructor - " + this.driver.toString());
 			PageFactory.initElements(driver, this);		
-			LoggerLoad.info("Get First Information");
+			Log.info("Get First Information");
+			//testContext = context;
+			//homePage = testContext.getPageObjectManager().getHomePage();
+			//registerPage=testContext.getPageObjectManager().getRegistrationPage();
 		}
 	
 		public void GetStartedButtonClick()
 		{
-			 getStartedButton.click();
+			driver.navigate().to(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+			getStartedButton.click();
 		}
-		public void GoToRegistrationPage()
+		public void GoToHomePage()
 		{
-			driver.get("https://dsportalapp.herokuapp.com/home");			
+			
+			driver.navigate().to(FileReaderManager.getInstance().getConfigReader().getHomeUrl());
+			Log.info("User navigated to Home Page");					
 		}
 		
 		public void ClickRegistrationLink()
@@ -52,8 +65,8 @@ public class RegisterPage
 		
 		public void VerifyRegistrationUrl()
 		{
-			System.out.println("drive-"+driver.getCurrentUrl());
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/register");
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getRegisterUrl());
+			Log.info("Verifies that user is on Registration Page");
 		}
 		
 		public void ClickRegistrationButton()
@@ -71,7 +84,7 @@ public class RegisterPage
 		
 		public void VerifyErrorMessage()
 		{
-			System.out.println("Error message should Display");
+			Log.info("Verifies Error message.");
 		}
 		
 		public void validateUser(String unm,String pwd,String cpwd,String status)
@@ -99,13 +112,14 @@ public class RegisterPage
 		
 		public void RegistrationSuccess()
 		{
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/home");	
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getHomeUrl());
+			Log.info("Verifies that user successfully Register.");
 		}
 				
 		public void RegistrationFail()
 		{
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/register");
-			System.out.println("Registration Fail, stay on same page.");
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getRegisterUrl());
+			Log.info("Registration Fail, user is on registration page.");
 		}	
 		
 		public void ClickLoginLink() 
@@ -125,7 +139,8 @@ public class RegisterPage
 		
 		public void RedirectToLandingPage()
 		{
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/");
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+			Log.info("User redirect to Landing page");
 		}
 		
 		public void ClickSignLink()
@@ -135,8 +150,10 @@ public class RegisterPage
 		
 		public void RedirectToLoginPage()
 		{
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/home");			
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getHomeUrl());
+			Log.info("Registration Fail, user is on registration page.");	
 		}
+
 		// Vimala Changes start
 		public void VerifyRegisterPageURL()
 		{
@@ -148,7 +165,5 @@ public class RegisterPage
 			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/login");
 		}
 		// Vimala Changes end
-}
-	
-	
 
+}
