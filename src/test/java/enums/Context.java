@@ -3,5 +3,6 @@ package enums;
 public enum Context {
 
 	RunOutput,
-	SubmitOutput
+	SubmitOutput,
+	ErrorMessage
 }

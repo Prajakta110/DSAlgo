@@ -1,4 +1,4 @@
-@SigninPage
+@Signin
 Feature: Sign in Page
 
   Scenario: Redirect to Register page
@@ -29,8 +29,8 @@ Feature: Sign in Page
     Then User verify the message as "Invalid Username and Password"
 
     Examples: 
-      | username | password |
-      | ninjas | ninja1234 |
+      | username | password  |
+      | ninjas   | ninja1234 |
 
   Scenario Outline: User  Login with  valid "<username>" and "<password>"
     Given User is on SignIn page
@@ -39,12 +39,10 @@ Feature: Sign in Page
     Then It should navigate to the home page with a message " You are logged in  "
 
     Examples: 
-      | Sheetname | RowNumber |
-      | SignIn    |         0 |
+      | Sheetname    | RowNumber |
+      | registration |         8 |
 
- 
-   @SignOut
-   Scenario: Verify user is able to Sign out using Sign Out button
-    Given User is on DS Algo Home Page
- ##  When User clicks on Sign Out button
-    Then User should be able to Sign out
+  
+   Scenario: User is able to sign out
+   	When User clicks on Sign out 
+   	Then User is signed out

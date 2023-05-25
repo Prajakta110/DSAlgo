@@ -46,10 +46,27 @@ public class EditorPage {
 			    .perform();
 		
 		action.sendKeys(codeTextArea, pythonCode).build().perform();
-		Log.info("User entered pythin code in Editor");
+		Log.info("User entered python code in Editor");
 		
 		runButton.click();
 		Log.info("User clicked on Run button on Editor");
+	}
+	
+	public void EnterCode(String pythonCode)
+	{
+		//driver.navigate().refresh();
+		Actions action = new Actions(driver);
+		
+		action.click(codeTextArea)
+			    .keyDown(Keys.CONTROL)
+			    .sendKeys("A")
+			    .keyUp(Keys.CONTROL)
+			    .sendKeys(Keys.DELETE)
+			    .build()
+			    .perform();
+		
+		action.sendKeys(codeTextArea, pythonCode).build().perform();
+		Log.info("User entered python code in Editor");
 	}
 	
 	public void VerifyOutput(String outputText)
@@ -78,6 +95,12 @@ public class EditorPage {
 	{
 		submitButton.click();
 		Log.info("User clicked on Submit button on Practice Questions Editor page");
+	}
+	
+	public void ClickOnRun()
+	{
+		runButton.click();
+		Log.info("User clicked on Run button on Editor");
 	}
 
 }

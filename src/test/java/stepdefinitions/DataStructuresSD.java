@@ -10,10 +10,10 @@ import enums.Context;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import managers.FileReaderManager;
 import pages.*;
-import readers.ExcelReader;
+import utilities.HandleExceptions;
 import utilities.Log;
-import utilities.Screenshots;
 
 public class DataStructuresSD {
 
@@ -23,7 +23,6 @@ public class DataStructuresSD {
 	HomePage homePage;
 	SignInPage signinPage;
 	EditorPage editorPage;
-	ExcelReader excelReader;
 	
 	public DataStructuresSD(TestContext context)
 	{
@@ -32,7 +31,6 @@ public class DataStructuresSD {
 		homePage = testContext.getPageObjectManager().getHomePage();
 		signinPage = testContext.getPageObjectManager().getSignInPage();
 		editorPage = testContext.getPageObjectManager().getEditorPage();
-		excelReader = new ExcelReader();
 	}
 	
 	//Scenario01
@@ -45,7 +43,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 
@@ -59,7 +57,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 	
@@ -73,7 +71,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 
@@ -86,7 +84,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 
@@ -100,7 +98,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 	
@@ -115,7 +113,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 
@@ -128,7 +126,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 
@@ -142,7 +140,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 
@@ -158,7 +156,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 	
@@ -167,13 +165,13 @@ public class DataStructuresSD {
 	{
 		try
 		{
-			Map<String, String> testdata = excelReader.ReadExcelFile(string).get(int1);
+			Map<String, String> testdata = FileReaderManager.getInstance().getExcelReader().ReadExcelFile(string).get(int1);
 			editorPage.RunCodeInTryEditor(testdata.get("Code"));
 			testContext.scenarioContext.setContext(Context.RunOutput, testdata.get("Result"));
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 	
@@ -187,7 +185,7 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
 	}
 
@@ -201,16 +199,8 @@ public class DataStructuresSD {
 		}
 		catch(Exception ex)
 		{
-			HandleExceptions(ex);
+			HandleExceptions.Handle(ex);
 		}
-	}
-
-	
-	public void HandleExceptions(Exception ex)
-	{
-		Log.error(ex.getMessage());
-		Log.endTestCase();
-		Screenshots.CaptureScreenshot(testContext.getWebDriverManager().getDriver());
 	}
 	
 }

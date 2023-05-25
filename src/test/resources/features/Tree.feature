@@ -1,8 +1,8 @@
-@Treepage
+@Tree
 Feature: To Validate Tree Page
 
   Background: The user is logged in to DS Algo portal
-    Given The user is on Signin page of DS Algo portal
+  	Given The user is on Signin page of DS Algo portal
     When The user enter valid "sonali" and "Dsalgo@1"
     And The user click on login button
    Then The user redirected to homepage
@@ -328,3 +328,7 @@ Feature: To Validate Tree Page
     When The user clicks on the Overview of Trees link
     When The user clicks on the Practice Questions in Overview of Trees
     Then The user should be directed to Practice Questions of tree page Page
+    
+   Scenario: User is able to sign out
+   	When User clicks on Sign out 
+   	Then User is signed out

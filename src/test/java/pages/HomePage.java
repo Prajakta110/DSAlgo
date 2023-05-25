@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,9 +17,16 @@ public class HomePage {
 	@FindBy(xpath = "//a[@href='/login']") WebElement loginBtn;
 	@FindBy(xpath = "//a[@href='data-structures-introduction']") WebElement dataStructureBtn;
 	@FindBy(xpath = "//a[@href='array']") WebElement arrayBtn;
+	@FindBy(xpath = "//a[@href='stack']") WebElement stackBtn;
+	@FindBy(xpath = "//a[@href=\"linked-list\"]") WebElement linkedListBtn;
+	@FindBy(xpath = "//a[@href=\"queue\"]") WebElement queueBtn;
+	@FindBy(xpath = "//a[@href=\"tree\"]") WebElement treeBtn;
+	@FindBy(xpath = "//a[@href=\"graph\"]") WebElement graphBtn;
 	@FindBy(xpath = "//div[contains(@class, 'alert')]") WebElement errorMsg;
 	@FindBy(xpath = "//a[@href='']") WebElement signedInUser;
 	@FindBy(xpath = "//a[@href='/logout']") WebElement signOutBtn;
+	@FindBy(xpath = "//a[@href='/register']") WebElement registerBtn;
+	@FindBy(xpath = "//a[contains(text(),'Data Structures')]") WebElement dataStructuresDropdown;
 	
 	
 	public HomePage(WebDriver driver)
@@ -29,13 +37,13 @@ public class HomePage {
 	
 	public void GoToHomePage()
 	{
-		driver.navigate().to(FileReaderManager.getInstance().getConfigReader().getHomeUrl());
+		driver.navigate().to(FileReaderManager.getInstance().getConfigReader().getHomePageUrl());
 		Log.info("User navigated to Home Page");
 	}
 
 	public void VerifyHomePageURL()
 	{
-		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getHomeUrl());
+		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getHomePageUrl());
 		Log.info("Verifies that user is on Home Page");
 	}
 	
@@ -57,6 +65,10 @@ public class HomePage {
 		Log.info("User clicked on Sign in");
 	}
 	
+	public void ClickOnRegister() {
+		registerBtn.click();
+	}
+	
 	public void ClickOnDataStructures()
 	{
 		dataStructureBtn.click();
@@ -67,6 +79,36 @@ public class HomePage {
 	{
 		arrayBtn.click();
 		Log.info("User clicked on Get Started button for Array");
+	}
+	
+	public void ClickOnStack()
+	{
+		stackBtn.click();
+		Log.info("User clicked on Get Started button for Stack");
+	}
+	
+	public void ClickOnLinkedList()
+	{
+		linkedListBtn.click();
+		Log.info("User clicked on Get Started button for Linked List");
+	}
+	
+	public void ClickOnTree()
+	{
+		treeBtn.click();
+		Log.info("User clicked on Get Started button for Tree");
+	}
+	
+	public void ClickOnGraph()
+	{
+		graphBtn.click();
+		Log.info("User clicked on Get Started button for Graph");
+	}
+	
+	public void ClickOnQueue()
+	{
+		queueBtn.click();
+		Log.info("User clicked on Get Started button for Queue");
 	}
 	
 	public void VerifyLoginErrorMsg()
@@ -91,5 +133,19 @@ public class HomePage {
 	{
 		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getLogoutSuccessMsg());
 		Log.info("Verified the success message for log out");
+	}
+	
+	public void ClickOnDataStructuresDropdown() {
+		dataStructuresDropdown.click();
+	}
+	
+	public void ClickonDataStructureLinkname(String linkname) {
+		WebElement element = driver.findElement(By.xpath("//a[@href='" + linkname + "']"));
+		element.click();
+	}
+
+	public void ClickonDataStructureDropDown(String linkname) {
+		WebElement element = driver.findElement(By.xpath("//a[@href='" + linkname + "']"));
+		element.click();
 	}
 }

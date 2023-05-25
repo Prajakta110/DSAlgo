@@ -4,26 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import readers.ConfigFileReader;
-import managers.PageObjectManager;
-//import utils.DriverFactory;
-import utils.LoggerLoad;
-//import managers.DriverManager;
+import managers.FileReaderManager;
+import utilities.Log;
 
 
 public class TreePage {
 	WebDriver driver;
-	//public static WebDriver driver;
-
-	//public static WebDriver driver =DriverFactory.getDriver;
-	ConfigFileReader cr = new ConfigFileReader();
-	String loginurl = ConfigFileReader.loginPage();
-    String homeUrl="https://dsportalapp.herokuapp.com/home";
-    String tryEditorURL=ConfigFileReader.tryEditorURL();
-	String tryhereurl=ConfigFileReader.gettryhereurl();
-	String treeurl=ConfigFileReader.getTreeUrl();
-	@FindBy(xpath = "//input[@id='id_username']")WebElement username;
 	
+	String loginurl = FileReaderManager.getInstance().getConfigReader().getLoginPageURL();
+    String homeUrl = FileReaderManager.getInstance().getConfigReader().getHomePageUrl();
+    String tryEditorURL = FileReaderManager.getInstance().getConfigReader().getEditorPageUrl();
+	String treeurl=FileReaderManager.getInstance().getConfigReader().getTreePageUrl();
+	
+	@FindBy(xpath = "//input[@id='id_username']")WebElement username;
 	@FindBy(xpath = "//input[@id='id_password']")WebElement password;
 	@FindBy(xpath = "//input[@value='Login']")WebElement loginbtn;
 	@FindBy(xpath="//div[@class='col'][6]//a")WebElement TreeGetStart;
@@ -74,78 +67,78 @@ public class TreePage {
 		
 	}
 	public void ClickTreeGS() {
-		LoggerLoad.info("User Click the tree Get Started Button");
+		Log.info("User Click the tree Get Started Button");
 		TreeGetStart.click();
 	}
 	public void ClickOverview() {
-		LoggerLoad.info("User Clicks on Overview of Tree link");
+		Log.info("User Clicks on Overview of Tree link");
 		OverOfTree.click();
 	}
 	public void ClickTerminology() {
-		LoggerLoad.info("User Clicks on Terminologies link");
+		Log.info("User Clicks on Terminologies link");
 		Terminologies.click();
 	}
 	public void ClickTypesOFTree() {
-		LoggerLoad.info("User Clicks on Types of tree link");
+		Log.info("User Clicks on Types of tree link");
 		TypesOfTree.click();
 	}
 	public void ClickTreeTraversal() {
-		LoggerLoad.info("User Clicks on  tree traversal link");
+		Log.info("User Clicks on  tree traversal link");
 		TreeTrave.click();
 	}
 	public void ClickTraveIllustrate() {
-		LoggerLoad.info("User Clicks on  traversal Illustration  link");
+		Log.info("User Clicks on  traversal Illustration  link");
 		TraveIllustrate.click();
 	}
 	public void ClickBinaryTree() {
-		LoggerLoad.info("User Clicks on  Binary Tree link");
+		Log.info("User Clicks on  Binary Tree link");
 		BinaryTree.click();
 	}
 	public void ClickTypesOfBinary() {
-		LoggerLoad.info("User Clicks on types of Binary tree link");
+		Log.info("User Clicks on types of Binary tree link");
 		TypesOfBinary.click();
 	}
 	public void ClickImplementPython() {
-		LoggerLoad.info("User Clicks on Implementation of Python link");
+		Log.info("User Clicks on Implementation of Python link");
 		ImplementPython.click();
 	}
 	public void ClickBTTraverse() {
-		LoggerLoad.info("User Clicks on Binary tree traversal link");
+		Log.info("User Clicks on Binary tree traversal link");
 		BTTraverse.click();
 	}
 	public void ClickImplementBT() {
-		LoggerLoad.info("User Clicks on Implementation of Binary Trees link");
+		Log.info("User Clicks on Implementation of Binary Trees link");
 		ImplementBT.click();
 	}
 	public void ClickAppsOfBT() {
-		LoggerLoad.info("User Clicks on Applications of Binary Trees link");
+		Log.info("User Clicks on Applications of Binary Trees link");
 		AppsOfBT.click();
 	}
 	public void ClickBinarySearchTree() {
-		LoggerLoad.info("User Clicks on  Binary Search Trees link");
+		Log.info("User Clicks on  Binary Search Trees link");
 		BST.click();
 	}
 	public void ClickImplementBST() {
-		LoggerLoad.info("User Clicks on Implementation of Binary Search Trees link");
+		Log.info("User Clicks on Implementation of Binary Search Trees link");
 		ImplementBST.click();
 	}
 	public void ClickTryhereLink() {
-		LoggerLoad.info("User Clicks on Try Here button");
+		Log.info("User Clicks on Try Here button");
 		TryhereLink.click();
 	}
 	
 	public void enterCode(String pythonCode) throws InterruptedException {
-		LoggerLoad.info("User enter the valid print statement");
+		Log.info("User enter the valid print statement");
 		textEditor.sendKeys(pythonCode);
 	} 
 	
 	public void clickRunBtn() throws InterruptedException {
-		LoggerLoad.info("User Clicked Run button");
+		Log.info("User Clicked Run button");
 		Thread.sleep(1000);
 		runBtn.click();
 	}
 	public String getOutput() {
-		LoggerLoad.info("Output after Run Statement:" +runOutput.getText());
+		Log.info("Output after Run Statement:" +runOutput.getText());
 		String Result = runOutput.getText();
 		return Result ;
 		
@@ -156,7 +149,7 @@ public class TreePage {
 		return errormsg;
 	}
 	public void ClickPractQuesLink() {
-		LoggerLoad.info("User Clicks the Practice Questions link");
+		Log.info("User Clicks the Practice Questions link");
 		PQues.click();
 	}
 

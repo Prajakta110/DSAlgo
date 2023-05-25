@@ -17,9 +17,9 @@
 ## (Comments)
 #Sample Feature Definition Template
 @LandingPage
-Feature: Check functionality of Get Started button
+Feature: Landing Page of DS Algo
 
-  @GetStarted01
+  
   Scenario: Check Get Started button click
     Given I am on DS algo landing page
     When I click on Get Started button

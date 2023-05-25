@@ -6,15 +6,19 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
-import utils.LoggerLoad;
+import managers.FileReaderManager;
+import utilities.Log;
 
 public class RegisterPage
 {
 		WebDriver driver;
-		Actions action;
-		
-		@FindBy(linkText="Register")WebElement registratioLink;
+		//Actions action;
+		//TestContext testContext;		
+		//HomePage homePage;
+		//SignInPage signinPage;
+		//RegisterPage registerPage;
+		String output;
+			
 		@FindBy(xpath="//input[@value='Register']")WebElement registrationButton;
 		@FindBy(name="username")WebElement userNametextBox;
 		@FindBy(xpath="//input[@name='password1']")WebElement passwordtextBox;
@@ -29,31 +33,35 @@ public class RegisterPage
 		@FindBy(xpath="//a[@class='nav-link dropdown-toggle']")WebElement dropDown;
 		@FindBy(xpath="//a[@href='/array']")WebElement dropDownMenu;
 		
+		
 		public RegisterPage(WebDriver driver)
 		{	
 			this.driver = driver;
+			Log.info("We are in Register page constructor - " + this.driver.toString());
 			PageFactory.initElements(driver, this);		
-			LoggerLoad.info("Get First Information");
+			Log.info("Get First Information");
+			//testContext = context;
+			//homePage = testContext.getPageObjectManager().getHomePage();
+			//registerPage=testContext.getPageObjectManager().getRegistrationPage();
 		}
 	
 		public void GetStartedButtonClick()
 		{
-			 getStartedButton.click();
+			driver.navigate().to(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+			getStartedButton.click();
 		}
-		public void GoToRegistrationPage()
+		public void GoToHomePage()
 		{
-			driver.get("https://dsportalapp.herokuapp.com/home");			
+			
+			driver.navigate().to(FileReaderManager.getInstance().getConfigReader().getHomePageUrl());
+			Log.info("User navigated to Home Page");					
 		}
 		
-		public void ClickRegistrationLink()
-		{
-			registratioLink.click();
-		}
 		
 		public void VerifyRegistrationUrl()
 		{
-			System.out.println("drive-"+driver.getCurrentUrl());
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/register");
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getRegisterPageURL());
+			Log.info("Verifies that user is on Registration Page");
 		}
 		
 		public void ClickRegistrationButton()
@@ -69,19 +77,19 @@ public class RegisterPage
 			registrationButton.click();
 		}
 		
-		public void VerifyErrorMessage()
+		public void VerifyErrorMessage(String message)
 		{
-			System.out.println("Error message should Display");
+			Assert.assertEquals(accountsuceessmessage.getText(), message);
 		}
 		
 		public void validateUser(String unm,String pwd,String cpwd,String status)
 		{
-			driver.navigate().refresh();
-			action = new Actions(driver);
+			//driver.navigate().refresh();
+			Actions action = new Actions(driver);
 			action.sendKeys(userNametextBox, unm).build().perform();
 			action.sendKeys(passwordtextBox, pwd).build().perform();
 			action.sendKeys(confirmpasswordtextBox, cpwd).build().perform();			
-			System.out.println("User Name:"+unm +"  Password:"+pwd +"  Confirm password:" +cpwd);		
+			//System.out.println("User Name:"+unm +"  Password:"+pwd +"  Confirm password:" +cpwd);		
 		}
 	
 		public void User71() 
@@ -99,13 +107,14 @@ public class RegisterPage
 		
 		public void RegistrationSuccess()
 		{
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/home");	
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getHomePageUrl());
+			Log.info("Verifies that user successfully Register.");
 		}
 				
 		public void RegistrationFail()
 		{
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/register");
-			System.out.println("Registration Fail, stay on same page.");
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getRegisterPageURL());
+			Log.info("Registration Fail, user is on registration page.");
 		}	
 		
 		public void ClickLoginLink() 
@@ -125,7 +134,8 @@ public class RegisterPage
 		
 		public void RedirectToLandingPage()
 		{
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/");
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+			Log.info("User redirect to Landing page");
 		}
 		
 		public void ClickSignLink()
@@ -135,9 +145,7 @@ public class RegisterPage
 		
 		public void RedirectToLoginPage()
 		{
-			Assert.assertEquals(driver.getCurrentUrl(), "https://dsportalapp.herokuapp.com/home");			
+			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getHomePageUrl());
+			Log.info("Registration Fail, user is on registration page.");	
 		}
 }
-	
-	
-

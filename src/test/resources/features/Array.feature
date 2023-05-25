@@ -16,36 +16,37 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@Array @DSAlgo
-Feature: Title of your feature
-  I want to use this template for my feature file
+@Array
+Feature: Array
 
-  Background: User is logged in
+  Background: User is on Home Page
     Given User is on DS Algo Home page
-    When User clicks on Sign in button on Home page
+
+	Scenario: User is logged in
+		When User clicks on Sign in button on Home page
     And User enters valid username and password
     And User clicks on Sign in
     Then User shoild be able to see the logged in message
-
-  @ArrayScenario01
+    
+ 
   Scenario: User is able to navigate to Array page
-    Given User is on DS Algo Home page
+    #Given User is on DS Algo Home page
     When User clicks on Get Started button for Array
     Then User should be redirected to Array page
 
-  @ArrayScenario02
+  
   Scenario: User is able to navigate to Arrays in Python page
     Given User is on Array page
     When User clicks on Arrays in Python link
     Then User should be redirected to Arrays in Python page
 
-  @ArrayScenario03
+  
   Scenario: User is able to navigate to Editor Page
     Given User is on Arrays in Python page
     When User clicks on Try Here button
     Then User should be redirected to Editor page
 
-  @ArrayScenario04
+  
   Scenario Outline: User is able to run a python code and get correct output or error message
     Given User is on Editor Page
     When User runs a python code from "<sheetName>" row number <rowNum>
@@ -55,7 +56,7 @@ Feature: Title of your feature
       | sheetName  | rowNum |
       | pythonCode |      5 |
 
-  @ArrayScenario05
+  
   Scenario Outline: User is able to run a python code and get correct output or error message
     Given User is on Editor Page
     When User runs a python code from "<sheetName>" row number <rowNum>
@@ -65,19 +66,19 @@ Feature: Title of your feature
       | sheetName  | rowNum |
       | pythonCode |      6 |
 
-  @ArrayScenario06
+  
   Scenario: User is able to navigate to Practice Questions page
     Given User is on Arrays in Python page
     When User clicks on Practice Questions link
     Then User should be redirected to Practice page
 
-  @ArrayScenario07
+  
   Scenario: User is able to navigate to Question page with Editor
     Given User is on Practice Questions Page
     When User clicks on first Question link
     Then User should be redirected to Question page with the editor
 
-  @ArrayScenario08
+  
   Scenario Outline: User is able to run and submit valid python code and get correct output
     Given User is on Question Page
     When User runs a relevant python code from "<sheetName>" row number <rowNum>
@@ -88,7 +89,7 @@ Feature: Title of your feature
       | sheetName  | rowNum |
       | pythonCode |      7 |
 
-  @ArrayScenario09
+  
   Scenario Outline: User is able to see a valid error when they try to run and submit invalid python code
     Given User is on Question Page
     When User runs code with error from "<sheetName>" row number <rowNum>
@@ -98,3 +99,8 @@ Feature: Title of your feature
     Examples: 
       | sheetName  | rowNum |
       | pythonCode |      8 |
+      
+   
+   Scenario: User is able to sign out
+   	When User clicks on Sign out 
+   	Then User is signed out

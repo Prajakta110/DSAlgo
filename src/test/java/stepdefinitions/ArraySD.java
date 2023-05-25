@@ -204,7 +204,7 @@ public class ArraySD {
 	{
 		try
 		{
-			arrayPage.VerifyTryEditorPage();
+			editorPage.VerifyTryEditorPage();
 			Log.endTestCase();
 		}
 		catch(Exception ex)
@@ -440,6 +440,34 @@ public class ArraySD {
 			editorPage.ClickOnSubmit();
 			editorPage.VerifyOutput((String)testContext.scenarioContext.getContext(Context.SubmitOutput));
 			Log.endTestCase();
+		}
+		catch(Exception ex)
+		{
+			HandleExceptions.Handle(ex);
+		}
+		
+	}
+	
+	@When("User clicks on Sign out")
+	public void user_clicks_on_sign_out() 
+	{
+		try
+		{
+			homePage.ClickOnSignOutBtn();
+		}
+		catch(Exception ex)
+		{
+			HandleExceptions.Handle(ex);
+		}
+		
+	}
+	
+	@Then("User is signed out")
+	public void user_id_signed_out() 
+	{
+		try
+		{
+			homePage.VerifyLogoutSuccessMsg();
 		}
 		catch(Exception ex)
 		{

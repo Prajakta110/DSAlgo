@@ -6,26 +6,21 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import managers.FileReaderManager;
-import readers.ConfigFileReader;
-import managers.DriverManager;
 import utilities.Log;
 
 public class SignInPage {
 
 	WebDriver driver;
-	String loginurl = ConfigFileReader.loginPage();
-	String registerurl = ConfigFileReader.registerPageURL();
+	String loginurl = FileReaderManager.getInstance().getConfigReader().getLoginPageURL();
+	String registerurl = FileReaderManager.getInstance().getConfigReader().getRegisterPageURL();
 
 	
 	@FindBy(name = "username") WebElement username;
 	@FindBy(name = "password") WebElement password;
 	@FindBy(xpath = "//input[@value='Login']") WebElement loginButton;
-	@FindBy(xpath = "//div[contains(text(),'Invalid Username and Password')]")
-	WebElement alertMsg;
-	@FindBy(xpath="/html[1]/body[1]/div[2]/div[1]/div[2]/a[1]")
-	WebElement registerlink;
-	@FindBy(xpath = "//div[contains(text(),'You are logged in')]")
-	WebElement successLogin;
+	@FindBy(xpath = "//div[contains(text(),'Invalid Username and Password')]") WebElement alertMsg; 
+	@FindBy(xpath="/html[1]/body[1]/div[2]/div[1]/div[2]/a[1]") WebElement registerlink;
+	@FindBy(xpath = "//div[contains(text(),'You are logged in')]") WebElement successLogin; 
 	@FindBy(xpath = "//div[contains(@class,'alert')]") WebElement errorMessage;
 	
 	public SignInPage(WebDriver driver)
@@ -104,5 +99,10 @@ public class SignInPage {
 		Log.info("Verified that user is getting valid message for invalid inputs on Sign in page"
 				+ "Expected message - " + message + ", Actual message - " + errorMessage.getText());
 		
+	}
+    
+    public void VerifySignInPageURL()
+	{
+		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getLoginPageURL());
 	}
 }
