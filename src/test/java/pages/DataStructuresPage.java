@@ -26,7 +26,7 @@ public class DataStructuresPage {
 
 	public void VerifyDataStructuresPage()
 	{
-		Assert.assertEquals(driver.getTitle(), FileReaderManager.getInstance().getConfigReader().getArrayHeading());
+		Assert.assertEquals(driver.getTitle(), FileReaderManager.getInstance().getConfigReader().getDataStructureHeading());
 		Log.info("Verified that user is on Data Structure page");
 	}
 	
