@@ -1,5 +1,6 @@
 package pages;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -92,12 +93,6 @@ public class RegisterPage
 			//System.out.println("User Name:"+unm +"  Password:"+pwd +"  Confirm password:" +cpwd);		
 		}
 	
-		public void User71() 
-		{
-			userNametextBox.sendKeys("User7");
-			loginpagepasswordtextBox.sendKeys("Test1177");
-		}
-	
 		public void clearTextbox()
 		{
 			userNametextBox.clear();
@@ -120,6 +115,7 @@ public class RegisterPage
 		public void ClickLoginLink() 
 		{
 			loginLink.click();	
+			Log.info("User is on Sign in page");
 		}
 		
 		public void ClickLoginButton() 
@@ -147,5 +143,19 @@ public class RegisterPage
 		{
 			Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getHomePageUrl());
 			Log.info("Registration Fail, user is on registration page.");	
+		}
+
+		public String RegisterWithValidInputs() {
+			Actions action = new Actions(driver);
+			String userName = RandomStringUtils.randomAlphanumeric(10);
+			String passWord = FileReaderManager.getInstance().getConfigReader().getDSAlgoPassword();
+			action.sendKeys(userNametextBox, userName).build().perform();
+			action.sendKeys(passwordtextBox, passWord).build().perform();
+			action.sendKeys(confirmpasswordtextBox, passWord).build().perform();
+			registrationButton.click();
+			
+			Log.info("Created new user " + userName);
+			
+			return userName;
 		}
 }

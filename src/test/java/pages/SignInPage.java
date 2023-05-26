@@ -37,8 +37,18 @@ public class SignInPage {
 		Log.info("User logged in to the application. Username - " 
 				+ FileReaderManager.getInstance().getConfigReader().getDSAlgoUserName());
 	}
+	
+	public void SignIn(String userName, String passWord)
+	{
+		Log.info("User is inside sign in for " + userName + ", " + passWord );
+		username.sendKeys(userName);
+		password.sendKeys(passWord);
+		loginButton.click();
+		Log.info("User logged in to the application. Username - " + userName);
+	}
+	
 	//To get Log in URL
-	public void getLoginurl() {
+	public void GetLoginurl() {
 		driver.get(loginurl);
 	}
 	
@@ -60,35 +70,35 @@ public class SignInPage {
 		Log.info("User clicked on Sign in button on Sign in page");
 	}
 	
-	public String successAlert() {
+	public String SuccessAlert() {
 		String successMsg = successLogin.getText();
 		return successMsg;
 	}
 
-	public String invalidAlert() {
+	public String InvalidAlert() {
 		String alertMessage = alertMsg.getText();
 		return alertMessage;
 	}
 
-	public String validateUsernamefield(String validationMessge) {
+	public String ValidateUsernamefield(String validationMessge) {
 		String message = username.getAttribute("validationMessage");
 		System.out.println("message");
 		return message;
 
 	}
 
-	public String validatePasswordfield(String validationMessge) {
+	public String ValidatePasswordfield(String validationMessge) {
 		String message = password.getAttribute("validationMessage");
 		System.out.println("message");
 		return message;
 
 	}
 
-	public void register() {
+	public void ClickOnRegister() {
 		registerlink.click();
 	}
 
-	public String register_page() {
+	public String Register_page() {
 		String title = driver.getTitle();
 		return title;
 	}

@@ -22,7 +22,7 @@ public class HomePage {
 	@FindBy(xpath = "//a[@href=\"queue\"]") WebElement queueBtn;
 	@FindBy(xpath = "//a[@href=\"tree\"]") WebElement treeBtn;
 	@FindBy(xpath = "//a[@href=\"graph\"]") WebElement graphBtn;
-	@FindBy(xpath = "//div[contains(@class, 'alert')]") WebElement errorMsg;
+	@FindBy(xpath = "//div[contains(@class, 'alert')]") WebElement alertMsg;
 	@FindBy(xpath = "//a[@href='']") WebElement signedInUser;
 	@FindBy(xpath = "//a[@href='/logout']") WebElement signOutBtn;
 	@FindBy(xpath = "//a[@href='/register']") WebElement registerBtn;
@@ -113,17 +113,17 @@ public class HomePage {
 	
 	public void VerifyLoginErrorMsg()
 	{
-		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
+		Assert.assertEquals(alertMsg.getText(), FileReaderManager.getInstance().getConfigReader().getInvalidLoginMsg());
 		Log.info("Verified the message that user is not logged in");
 	}
 	
 	public void VerifyLoginSuccessMsg()
 	{
-		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getValidLoginMsg());
+		Assert.assertEquals(alertMsg.getText(), FileReaderManager.getInstance().getConfigReader().getValidLoginMsg());
 		Log.info("Verified the success message for log in");
 	}
 	
-	public void ClickOnSignOutBtn()
+	public void ClickOnSignOut()
 	{
 		signOutBtn.click();
 		Log.info("User clicked on Sign out");
@@ -131,7 +131,7 @@ public class HomePage {
 	
 	public void VerifyLogoutSuccessMsg()
 	{
-		Assert.assertEquals(errorMsg.getText(), FileReaderManager.getInstance().getConfigReader().getLogoutSuccessMsg());
+		Assert.assertEquals(alertMsg.getText(), FileReaderManager.getInstance().getConfigReader().getLogoutSuccessMsg());
 		Log.info("Verified the success message for log out");
 	}
 	
@@ -147,5 +147,11 @@ public class HomePage {
 	public void ClickonDataStructureDropDown(String linkname) {
 		WebElement element = driver.findElement(By.xpath("//a[@href='" + linkname + "']"));
 		element.click();
+	}
+	
+	public void VerifySuccessfulRegistration(String userName) {
+		String expectedMsg =  FileReaderManager.getInstance().getConfigReader().getSuccessfulRegisterationMsg() + userName;
+		Assert.assertEquals(alertMsg.getText(), expectedMsg);
+		Log.info("Verified registration success message for user " + userName);
 	}
 }

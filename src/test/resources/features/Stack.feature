@@ -28,25 +28,21 @@ Feature: Stack Page
     And User clicks on Signin
     Then User should be able to see the logged in message
 
-  
-  Scenario: 1 User is able to navigate to Stack page
+  Scenario: User is able to navigate to Stack page
     Given User is on DS Algo Home page
     When User clicks on Get Started button for Stack
     Then User should be redirected to Stack page
 
-  
-  Scenario: 2 User navigate to operations In Stack Page
+  Scenario: User navigate to operations In Stack Page
     Given User is on Stack page
     When User clicks on Operations in Stack link
     Then User should be redirected to Opeartions in Stack page
 
-  
-  Scenario: 3 User navigate to implementation page
+  Scenario: User navigate to implementation page
     Given User is on Operations-in-stack page
     When User clicks on implementation link
     Then User should redirect to implementation page
 
-  
   Scenario: User navigate to application page
     Given User is on  implentation page
     When User clicks Application link

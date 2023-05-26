@@ -6,13 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import managers.FileReaderManager;
 import utilities.Log;
 
 public class DataStructuresPage {
 	
 	WebDriver driver;
 	
-	@FindBy(xpath = "//h4[contains(text(),'Data Structures')]") WebElement pageHeading;
 	@FindBy(xpath = "//a[@href='time-complexity']") WebElement timeComplexityLink;
 	@FindBy(xpath = "//p[text()='Time Complexity']") WebElement timeComplexityHeading;
 	@FindBy(xpath = "//a[@href='/tryEditor']") WebElement tryEditorLink;
@@ -26,7 +26,7 @@ public class DataStructuresPage {
 
 	public void VerifyDataStructuresPage()
 	{
-		Assert.assertTrue(pageHeading.isDisplayed());
+		Assert.assertEquals(driver.getTitle(), FileReaderManager.getInstance().getConfigReader().getArrayHeading());
 		Log.info("Verified that user is on Data Structure page");
 	}
 	

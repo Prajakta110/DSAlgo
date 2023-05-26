@@ -19,7 +19,6 @@
 @LandingPage
 Feature: Landing Page of DS Algo
 
-  
   Scenario: Check Get Started button click
     Given I am on DS algo landing page
     When I click on Get Started button

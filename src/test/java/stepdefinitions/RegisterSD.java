@@ -1,9 +1,6 @@
 package stepdefinitions;
 
-import java.io.IOException;
 import java.util.Map;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.openqa.selenium.WebDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,10 +15,10 @@ import utilities.Log;
 
 public class RegisterSD 
 {
-	WebDriver driver;	
+	TestContext testContext;
+	
 	RegisterPage registerPage;
 	SignInPage signinPage;
-	TestContext testContext;
 	HomePage homePage;
 	
 	public RegisterSD(TestContext context)
@@ -33,7 +30,7 @@ public class RegisterSD
 	}
 	
 	@Given("Ds Algo  portal home page")
-	public void ds_algo_portal_home_page() throws IOException 
+	public void ds_algo_portal_home_page()
 	{	
 		try
 		{
@@ -65,6 +62,7 @@ public class RegisterSD
 		try
 		{
 			registerPage.VerifyRegistrationUrl();
+			Log.endTestCase();
 		}
 		catch(Exception ex)
 		{
@@ -78,6 +76,9 @@ public class RegisterSD
 	{
 		try
 		{
+			Log.startTestCase();
+			homePage.GoToHomePage();
+			homePage.ClickOnRegister();
 			registerPage.VerifyRegistrationUrl();
 		}
 		catch(Exception ex)
@@ -105,6 +106,7 @@ public class RegisterSD
 		try
 		{
 			registerPage.VerifyRegistrationUrl();
+			Log.endTestCase();
 		}
 		catch(Exception ex)
 		{
@@ -157,8 +159,8 @@ public class RegisterSD
 		try
 		{
 			registerPage.ClickLoginLink();
-			registerPage.User71();
-			registerPage.ClickLoginButton();
+			signinPage.SignIn((String)testContext.scenarioContext.getContext(Context.NewUserName)
+					, FileReaderManager.getInstance().getConfigReader().getDSAlgoPassword());
 		}
 		catch(Exception ex)
 		{
@@ -186,6 +188,7 @@ public class RegisterSD
 		{
 			registerPage.RedirectToLandingPage();
 			homePage.GoToHomePage();
+			Log.endTestCase();
 		}
 		catch(Exception ex)
 		{
@@ -211,7 +214,8 @@ public class RegisterSD
 	{
 		try
 		{
-			registerPage.RedirectToLoginPage();
+			homePage.VerifyLoginSuccessMsg();
+			Log.endTestCase();
 		}
 		catch(Exception ex)
 		{
@@ -220,7 +224,7 @@ public class RegisterSD
 	}
 	
 	@When("user registers with userName from {string} and rownumber {int}")
-	public void user_registers_with_user_name_from_and_rownumber(String sheetName, Integer rownumber) throws InvalidFormatException,IOException 
+	public void user_registers_with_user_name_from_and_rownumber(String sheetName, Integer rownumber)
 	{
 		try
 		{
@@ -248,4 +252,33 @@ public class RegisterSD
 			HandleExceptions.Handle(ex);
 		}
 	}
+	
+	@When("user enters valid username, password and confirm password")
+	public void user_enters_valid_username_password_and_confirm_password() {
+		try
+		{
+			testContext.scenarioContext.setContext(Context.NewUserName, registerPage.RegisterWithValidInputs());
+		}
+		catch(Exception ex)
+		{
+			HandleExceptions.Handle(ex);
+		}
+	}
+
+	@Then("user is able to register successfully")
+	public void user_is_able_to_register_successfully() {
+		try
+		{
+		    homePage.VerifySuccessfulRegistration((String)testContext.scenarioContext.getContext(Context.NewUserName));
+		   // homePage.ClickOnSignOut();
+		    Log.endTestCase();
+		}
+		catch(Exception ex)
+		{
+			HandleExceptions.Handle(ex);
+		}
+	}
+
+
+
 }

@@ -26,42 +26,42 @@ Feature: Linked list
     When User clicks on Sign in button on Home page
     And User enters valid username and password
     And User clicks on Sign in
-    Then User shoild be able to see the logged in message
+    Then User should be able to see the logged in message
 
   Scenario: Verify Linked List Page Launch on Click of Linked List Get Started Button
     When User clicks on LinkedList GetStartedBtn
     Then Verify User is on Linked List Page
 
-  Scenario Outline: Verify Linked List Link List "<linkname>" Url
-    Given User clicks on LinkedList GetStartedBtn
-    When User clicks Linked-listpage "<linkname>" link
-    Then Verify linked list link url "<url>"
+  Scenario Outline: User is able to run python code from  "<linkname>" Url and get correct output
+    Given User is on Editor page via "<linkname>" and "<url>"
+    When User runs python code from "<sheetName>" and row number <rowNum>
+    Then User should see the correct output
 
     Examples: 
-      | linkname                        | url                                                                            |
-      | Introduction                    | https://dsportalapp.herokuapp.com/linked-list/introduction/                    |
-      | Creating Linked LIst            | https://dsportalapp.herokuapp.com/linked-list/creating-linked-list/            |
-      | Types of Linked List            | https://dsportalapp.herokuapp.com/linked-list/types-of-linked-list/            |
-      | Implement Linked List in Python | https://dsportalapp.herokuapp.com/linked-list/implement-linked-list-in-python/ |
-      | Traversal                       | https://dsportalapp.herokuapp.com/linked-list/traversal/                       |
-      | Insertion                       | https://dsportalapp.herokuapp.com/linked-list/insertion-in-linked-list/        |
-      | Deletion                        | https://dsportalapp.herokuapp.com/linked-list/deletion-in-linked-list/         |
+      | linkname                        | url                                                                            | sheetName  | rowNum |
+      | Introduction                    | https://dsportalapp.herokuapp.com/linked-list/introduction/                    | pythonCode |      0 |
+      | Creating Linked LIst            | https://dsportalapp.herokuapp.com/linked-list/creating-linked-list/            | pythonCode |      0 |
+      | Types of Linked List            | https://dsportalapp.herokuapp.com/linked-list/types-of-linked-list/            | pythonCode |      0 |
+      | Implement Linked List in Python | https://dsportalapp.herokuapp.com/linked-list/implement-linked-list-in-python/ | pythonCode |      0 |
+      | Traversal                       | https://dsportalapp.herokuapp.com/linked-list/traversal/                       | pythonCode |      0 |
+      | Insertion                       | https://dsportalapp.herokuapp.com/linked-list/insertion-in-linked-list/        | pythonCode |      0 |
+      | Deletion                        | https://dsportalapp.herokuapp.com/linked-list/deletion-in-linked-list/         | pythonCode |      0 |
 
-  Scenario Outline: Verify Linked List Sub Link Url "<url>" Try Here Editor Button
-    Given User launches linkedlist suburl "<url>"
-    When User clicks on try here button
-    Then Verify Try Here button takes to editor Url
+  Scenario Outline: User is able to run python code from  "<linkname>" Url and get correct error message
+    Given User is on Editor page via "<linkname>" and "<url>"
+    When User runs python code from "<sheetName>" and row number <rowNum>
+    Then User should see the correct error message
 
     Examples: 
-      | linkname                        | url                                                                            |
-      | Introduction                    | https://dsportalapp.herokuapp.com/linked-list/introduction/                    |
-      | Creating Linked LIst            | https://dsportalapp.herokuapp.com/linked-list/creating-linked-list/            |
-      | Types of Linked List            | https://dsportalapp.herokuapp.com/linked-list/types-of-linked-list/            |
-      | Implement Linked List in Python | https://dsportalapp.herokuapp.com/linked-list/implement-linked-list-in-python/ |
-      | Traversal                       | https://dsportalapp.herokuapp.com/linked-list/traversal/                       |
-      | Insertion                       | https://dsportalapp.herokuapp.com/linked-list/insertion-in-linked-list/        |
-      | Deletion                        | https://dsportalapp.herokuapp.com/linked-list/deletion-in-linked-list/         |
-      
-    Scenario: User is able to sign out
-   	When User clicks on Sign out 
-   	Then User is signed out
+      | linkname                        | url                                                                            | sheetName  | rowNum |
+      | Introduction                    | https://dsportalapp.herokuapp.com/linked-list/introduction/                    | pythonCode |      1 |
+      | Creating Linked LIst            | https://dsportalapp.herokuapp.com/linked-list/creating-linked-list/            | pythonCode |      1 |
+      | Types of Linked List            | https://dsportalapp.herokuapp.com/linked-list/types-of-linked-list/            | pythonCode |      1 |
+      | Implement Linked List in Python | https://dsportalapp.herokuapp.com/linked-list/implement-linked-list-in-python/ | pythonCode |      1 |
+      | Traversal                       | https://dsportalapp.herokuapp.com/linked-list/traversal/                       | pythonCode |      1 |
+      | Insertion                       | https://dsportalapp.herokuapp.com/linked-list/insertion-in-linked-list/        | pythonCode |      1 |
+      | Deletion                        | https://dsportalapp.herokuapp.com/linked-list/deletion-in-linked-list/         | pythonCode |      1 |
+
+  Scenario: User is able to sign out
+    When User clicks on Sign out
+    Then User is signed out

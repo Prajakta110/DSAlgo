@@ -91,12 +91,13 @@ public class ArraySD {
 		}
 	}
 
-	@Then("User shoild be able to see the logged in message")
-	public void user_shoild_be_able_to_see_the_logged_in_message() 
+	@Then("User should be able to see the logged in message")
+	public void user_should_be_able_to_see_the_logged_in_message() 
 	{
 		try
 		{
 			homePage.VerifyLoginSuccessMsg();
+			Log.endTestCase();
 		}
 		catch(Exception ex)
 		{
@@ -172,13 +173,44 @@ public class ArraySD {
 		}
 	}
 
-	@Given("User is on Arrays in Python page")
-	public void user_is_on_arrays_in_python_page() 
+	@Given("User is on Editor page via Arrays using List")
+	public void user_is_on_editor_page_via_arrays_using_list() 
 	{
 		try
 		{
 			homePage.ClickOnArray();
-			arrayPage.ClickOnArraysInPython();
+			arrayPage.ClickOnArraysUsingList();
+			arrayPage.ClickOnTryEditor();
+		}
+		catch(Exception ex)
+		{
+			HandleExceptions.Handle(ex);
+		}
+	}
+	
+	@Given("User is on Editor page via Basic Operations in Lists")
+	public void user_is_on_editor_page_via_basic_operations_in_lists() 
+	{
+		try
+		{
+			homePage.ClickOnArray();
+			arrayPage.ClickOnBasicOperationsInLists();
+			arrayPage.ClickOnTryEditor();
+		}
+		catch(Exception ex)
+		{
+			HandleExceptions.Handle(ex);
+		}
+	}
+	
+	@Given("User is on Editor page via Applications of Array")
+	public void user_is_on_editor_page_via_applications_of_array() 
+	{
+		try
+		{
+			homePage.ClickOnArray();
+			arrayPage.ClickOnApplicationsOfArray();
+			arrayPage.ClickOnTryEditor();
 		}
 		catch(Exception ex)
 		{
@@ -243,7 +275,6 @@ public class ArraySD {
 		}
 	}
 
-
 	@Then("User should be able to see the correct output")
 	public void user_should_be_able_to_see_the_correct_output() 
 	{
@@ -265,6 +296,20 @@ public class ArraySD {
 		{
 			editorPage.VerifyErrorMessage((String)testContext.scenarioContext.getContext(Context.RunOutput));
 			Log.endTestCase();
+		}
+		catch(Exception ex)
+		{
+			HandleExceptions.Handle(ex);
+		}
+	}
+	
+	@Given("User is on Arrays in Python page")
+	public void user_is_on_arrays_in_python_page() 
+	{
+		try
+		{
+			homePage.ClickOnArray();
+			arrayPage.ClickOnArraysInPython();
 		}
 		catch(Exception ex)
 		{
@@ -453,7 +498,7 @@ public class ArraySD {
 	{
 		try
 		{
-			homePage.ClickOnSignOutBtn();
+			homePage.ClickOnSignOut();
 		}
 		catch(Exception ex)
 		{
@@ -468,6 +513,7 @@ public class ArraySD {
 		try
 		{
 			homePage.VerifyLogoutSuccessMsg();
+			Log.endTestCase();
 		}
 		catch(Exception ex)
 		{

@@ -1,8 +1,6 @@
 package stepdefinitions;
 
-import java.io.IOException;
 import java.util.Map;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import enums.Context;
 import context.TestContext;
 import io.cucumber.java.en.Given;
@@ -78,36 +76,11 @@ public class StackSD {
 		}
 	}
 
-	@Then("User should be able to see the logged in message")
-	public void user_shoild_be_able_to_see_the_logged_in_message() {
-		try {
-			homePage.VerifyLoginSuccessMsg();
-		} catch (Exception ex) {
-			HandleExceptions.Handle(ex);
-		}
-	}
-
-	/*
-	 * @Given("User is on DS Algo Home page") public void
-	 * user_is_on_ds_algo_home_page() { try { Log.startTestCase();
-	 * homePage.GoToHomePage(); } catch(Exception ex) { HandleExceptions.Handle(ex);
-	 * } }
-	 */
-
-	/*
-	 * @Given("User is on Home Page and logged in to DS Algo app") public void
-	 * user_is_on_home_page_and_logged_in_to_ds_algo_app() throws IOException { try
-	 * { //Log.startTestCase(); //homePage.GoToHomePage(); //stackPage.DSAppPage();
-	 * //stackPage.GetStartedButtonClick(); //homePage.ClickOnSignIn();
-	 * //signinPage.SignIn(); stackPage.ClickSignLink(); stackPage.User71Stack();
-	 * stackPage.ClickLoginButton(); } catch(Exception ex) {
-	 * HandleExceptions.Handle(ex); } }
-	 */
-
-	@When("User clicks on Get Started button for Stack")
+	@Then("User clicks on Get Started button for Stack")
 	public void user_clicks_on_get_started_button_for_stack() {
 		try {
 			homePage.ClickOnStack();
+			Log.endTestCase();
 		} catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}
@@ -117,6 +90,7 @@ public class StackSD {
 	public void user_should_be_redirected_to_stack_page() {
 		try {
 			stackPage.NavigateTOStackPage();
+			Log.endTestCase();
 		} catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}
@@ -135,6 +109,7 @@ public class StackSD {
 	public void user_clicks_on_operations_in_stack_link() {
 		try {
 			stackPage.ClickOperationLink();
+			Log.endTestCase();
 		} catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}
@@ -144,6 +119,7 @@ public class StackSD {
 	public void user_should_be_redirected_to_opeartions_in_stack_page() {
 		try {
 			stackPage.NavigateToOperationPage();
+			Log.endTestCase();
 		} catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}
@@ -174,6 +150,7 @@ public class StackSD {
 	public void user_should_redirect_to_implementation_page() {
 		try {
 			stackPage.NavigateToImplementationPage();
+			Log.endTestCase();
 		} catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}
@@ -205,6 +182,7 @@ public class StackSD {
 	public void user_should_redirect_to_application_page() {
 		try {
 			stackPage.NavigateToApplicationsPage();
+			Log.endTestCase();
 		} catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}
@@ -233,6 +211,7 @@ public class StackSD {
 	public void user_should_navigate_to_try_editor_page() {
 		try {
 			stackPage.NavigateToTryHerePage();
+			Log.endTestCase();
 		} catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}
@@ -243,7 +222,6 @@ public class StackSD {
 	public void user_is_on_try_editor_page() {
 		try {
 			homePage.ClickOnStack();
-			// stackPage.NavigateToTryHerePage();
 			stackPage.ClickApplicationsLink();
 			stackPage.TryHereButton();
 		} catch (Exception ex) {
@@ -262,12 +240,13 @@ public class StackSD {
 
 	@When("User runs python code from {string} rownumber {int}")
 	public void user_runs_python_code_from_rownumber(String sheetName, Integer rownumber)
-			throws InvalidFormatException, IOException {
+	{
 		try {
 			Map<String, String> testdata = FileReaderManager.getInstance().getExcelReader().ReadExcelFile(sheetName).get(rownumber);
 			editorPage.RunCodeInTryEditor(testdata.get("Code"));
 			testContext.scenarioContext.setContext(Context.RunOutput, testdata.get("Result"));
-		} catch (Exception ex) {
+		} 
+		catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}
 	}
@@ -277,7 +256,6 @@ public class StackSD {
 		try {
 			editorPage.VerifyOutput((String)testContext.scenarioContext.getContext(Context.RunOutput));
 			Log.endTestCase();
-			// System.out.println("Valid success");
 		} catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}
@@ -288,7 +266,6 @@ public class StackSD {
 		try {
 			editorPage.VerifyErrorMessage((String)testContext.scenarioContext.getContext(Context.RunOutput));
 			Log.endTestCase();
-			// System.out.println("Valid success");
 		} catch (Exception ex) {
 			HandleExceptions.Handle(ex);
 		}

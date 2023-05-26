@@ -18,21 +18,13 @@
 #Sample Feature Definition Template
 @Register
 Feature: Registration Page
-
   
-  Scenario: The user click register link
-    Given Ds Algo  portal home page
-    When The user clicks the Register link
-    Then The user should be redirected to registration page.
-
-  
-  Scenario: 1 user click register button and  getting error message
+  Scenario: Error while trying to register with blank details
     Given user is on registration page
     When user click register button with empty Unm and pwd textbox
     Then warning message should display
 
-  
-  Scenario Outline: 3 Check Combination of Username and Password from "<sheetName>" rownumber <rownumber>
+  Scenario Outline: User gets error when entered invalid combinations of from "<sheetName>" rownumber <rownumber>
     Given user is on registration page
     When user registers with userName from "<sheetName>" and rownumber <rownumber>
     Then verify message
@@ -48,20 +40,16 @@ Feature: Registration Page
       | registration |         6 |
       | registration |         7 |
 
-  #@TheUserClickNumpyNinjaLink
-  #Scenario: 4 The user click login button
-   # Given user is on registration page
-   # When user click NumpyNinja link.
-   # Then user redirect to landing page
+	Scenario: User is able to login with valid details
+		Given user is on registration page
+		When user enters valid username, password and confirm password
+		Then user is able to register successfully
 
-  
-  Scenario: The user click register link
-    Given Ds Algo  portal home page
-    When The user clicks the Register link
-    Then The user should be redirected to registration page.
-
-  #@TheUserClickLoginButton
-  #Scenario: user click login button
-   # Given user is on registration page
-   # When user click login link to check successful registration
-   # Then user logged into website
+  #Scenario: User is able to login with registered new user
+  # Given user is on registration page
+   #When user click login link to check successful registration
+   #Then user logged into website
+   
+  Scenario: User is able to sign out
+    When User clicks on Sign out
+    Then User is signed out

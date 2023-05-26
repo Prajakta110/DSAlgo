@@ -18,45 +18,23 @@
 #Sample Feature Definition Template
 @Home
 Feature: Home Page tests
-
-  #Scenario: Title of your scenario
-  # Given I want to write a step with precondition
-  #And some other precondition
-  #When I complete action
-  #And some other action
-  #And yet another action
-  #Then I validate the outcomes
-  #And check more outcomes
-  #@tag2
-  #Scenario Outline: Title of your scenario outline
-  # Given I want to write a step with <name>
-  # When I check for the <value> in step
-  #Then I verify the <status> in step
-  #Examples:
-  # | name  | value | status  |
-  #| name1 |     5 | success |
-  #| name2 |     7 | Fail    |
-
   
-  Scenario: ClickRegister
+  Scenario: Register page opens on click of Register link
     Given User is on DS algo home page
     When  User clicks on Register
     Then User should be directed to Register page
 
-  
-  Scenario: SignIn
+  Scenario: Sign In page opens on click of Sign in  page
     Given User is on DS algo home page
     When User clicks on SignIn
     Then User should be directed to SignIn Page
 
-  
-  Scenario: DataStructures
+  Scenario: Data Structures dropdown opens on click of dropdown
     Given User is on DS algo home page
     When User Clicks on Data Structure Drop Down
     Then user should be able to view the Drop Down
 
-  
-  Scenario Outline: HomePage DataStructure Links Validation
+  Scenario Outline: Home Page DataStructure Links Validation
     Given User is on DS algo home page
     When User clicks on HomePage DataStructure "<linkname>"
     Then user should be able to view the error msg
@@ -71,8 +49,7 @@ Feature: Home Page tests
       | tree                         |
       | graph                        |
 
-  
-  Scenario Outline: HomePage DataStructure DropDown Validation
+  Scenario Outline: HomePage Data Structure DropDown Validation
     Given User is on DS algo home page
     When User Clicks on Data Structure Drop Down
     And User clicks on HomePage DataStructure DropDown "<linkname>"

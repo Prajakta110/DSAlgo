@@ -1,7 +1,10 @@
 @Tree
 Feature: To Validate Tree Page
 
-  Background: The user is logged in to DS Algo portal
+  Background: User is on Home Page
+    Given User is on DS Algo Home page
+    
+    Scenario: The user is logged in to DS Algo portal
   	Given The user is on Signin page of DS Algo portal
     When The user enter valid "sonali" and "Dsalgo@1"
     And The user click on login button

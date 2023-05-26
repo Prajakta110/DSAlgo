@@ -4,5 +4,6 @@ public enum Context {
 
 	RunOutput,
 	SubmitOutput,
-	ErrorMessage
+	ErrorMessage,
+	NewUserName
 }

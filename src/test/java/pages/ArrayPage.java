@@ -13,8 +13,10 @@ public class ArrayPage {
 
 	WebDriver driver;
 	
-	@FindBy(xpath = "//h4[contains(text(),'Array')]") WebElement pageHeading;
-	@FindBy(xpath = "//a[@href='arrays-in-python']") WebElement arraysInPythonLink;
+	@FindBy(xpath = "//a[text()='Arrays in Python']") WebElement arraysInPythonLink;
+	@FindBy(xpath = "//a[text()='Arrays Using List']") WebElement arraysUsingListLink;
+	@FindBy(xpath = "//a[text()='Basic Operations in Lists']") WebElement basicOperationsInListsLink;
+	@FindBy(xpath = "//a[text()='Applications of Array']") WebElement applicationsOfArrayLink;
 	@FindBy(xpath = "//p[text()='Arrays in Python']") WebElement arraysInPythonHeading;
 	@FindBy(xpath = "//a[@href='/tryEditor']") WebElement tryEditorLink;
 	@FindBy(xpath = "//a[@href='/array/practice']") WebElement practiceQuestionsLink;
@@ -32,7 +34,7 @@ public class ArrayPage {
 	 */
 	public void VerifyArrayPage()
 	{
-		Assert.assertTrue(pageHeading.isDisplayed());
+		Assert.assertEquals(driver.getTitle(), FileReaderManager.getInstance().getConfigReader().getArrayHeading());
 		Log.info("Verified that user is one Array page");
 	}
 	
@@ -78,6 +80,21 @@ public class ArrayPage {
 	{
 		Assert.assertEquals(driver.getCurrentUrl(), FileReaderManager.getInstance().getConfigReader().getPracticePageUrl());
 		Log.info("Verified that user is on Practice page");
+	}
+
+	public void ClickOnApplicationsOfArray() {
+		applicationsOfArrayLink.click();
+		Log.info("User clicked on Applications Of Array link on Array page");
+	}
+
+	public void ClickOnBasicOperationsInLists() {
+		basicOperationsInListsLink.click();
+		Log.info("User clicked on Basic Operations In Lists link on Array page");
+	}
+
+	public void ClickOnArraysUsingList() {
+		arraysUsingListLink.click();
+		Log.info("User clicked on Arrays Using List link on Array page");
 	}
 	
 }

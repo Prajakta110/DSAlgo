@@ -249,13 +249,34 @@ public class ConfigFileReader {
 			throw new RuntimeException("loginBtnText not specified in the Configuration.properties file.");
 	}
 
-	// Registration URL
+	public String getTreeHeading() {
+		String heading = properties.getProperty("treeHeading");
+		if (heading != null)
+			return heading;
+		else
+			throw new RuntimeException("treeHeading not specified in the Configuration.properties file.");
+	}
 	
+	public String getArrayHeading() {
+		String heading = properties.getProperty("arrayHeading");
+		if (heading != null)
+			return heading;
+		else
+			throw new RuntimeException("arrayHeading not specified in the Configuration.properties file.");
+	}
+	
+	public String getDataStructureHeading() {
+		String heading = properties.getProperty("dataStructureHeading");
+		if (heading != null)
+			return heading;
+		else
+			throw new RuntimeException("dataStructureHeading not specified in the Configuration.properties file.");
+	}
 
 	public String geturl(String pagename) {
-		String url = properties.getProperty(pagename);
-		if (url != null)
-			return url;
+		String heading = properties.getProperty(pagename);
+		if (heading != null)
+			return heading;
 		else
 			throw new RuntimeException(pagename + " url not specified in the Configuration.properties file.");
 	}
@@ -267,5 +288,14 @@ public class ConfigFileReader {
 		else
 			throw new RuntimeException(pagename + "url not specified in the Configuration.properties file.");
 	}
+	
+	public String getSuccessfulRegisterationMsg() {
+		String msg = properties.getProperty("successfulRegisterationMsg");
+		if (msg != null)
+			return msg;
+		else
+			throw new RuntimeException("successfulRegisterationMsg not specified in the Configuration.properties file.");
+	}
+
 
 }

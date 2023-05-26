@@ -76,7 +76,7 @@ public class LinkedListPage {
 		tryHereBtn.sendKeys("printintroductioncheck");
 	}
 	
-	public void tryHereBtn() {
+	public void ClickOnTryHereBtn() {
 		tryHereBtn.click();;
 	}
 	

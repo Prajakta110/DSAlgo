@@ -13,7 +13,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, //reporting purpose
 		monochrome=false,  //console output color
 		//tags = "@LandingPage or @Register or @Signin or @Home or @DataStructures or @Array or @LinkedList or @Stack or @Tree" , //tags from feature file
-				tags = "@LandingPage",
+		//tags = "@LandingPage",
 		features = {"src/test/resources/features"}, //location of feature files
 		glue= "stepdefinitions") //location of step definition files
 

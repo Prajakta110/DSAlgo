@@ -54,7 +54,7 @@ public class TreeSD {
 	@Given("The user is on Signin page of DS Algo portal")
 	public void the_user_is_on_signin_page_of_ds_algo_portal() {
 		Log.info("------User is On Sign in page------");
-		signinPage.getLoginurl();
+		signinPage.GetLoginurl();
 	}
 
 	@When("The user enter valid {string} and {string}")
