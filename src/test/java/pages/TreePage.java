@@ -127,27 +127,6 @@ public class TreePage {
 		TryhereLink.click();
 	}
 	
-	public void enterCode(String pythonCode) throws InterruptedException {
-		Log.info("User enter the valid print statement");
-		textEditor.sendKeys(pythonCode);
-	} 
-	
-	public void clickRunBtn() throws InterruptedException {
-		Log.info("User Clicked Run button");
-		Thread.sleep(1000);
-		runBtn.click();
-	}
-	public String getOutput() {
-		Log.info("Output after Run Statement:" +runOutput.getText());
-		String Result = runOutput.getText();
-		return Result ;
-		
-	}
-	public String getErrormsg() {
-		String errormsg = driver.switchTo().alert().getText();
-		driver.switchTo().alert().accept();
-		return errormsg;
-	}
 	public void ClickPractQuesLink() {
 		Log.info("User Clicks the Practice Questions link");
 		PQues.click();

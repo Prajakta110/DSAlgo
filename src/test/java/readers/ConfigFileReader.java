@@ -296,6 +296,36 @@ public class ConfigFileReader {
 		else
 			throw new RuntimeException("successfulRegisterationMsg not specified in the Configuration.properties file.");
 	}
+	
+	public String getEmptyFieldMsg() {
+		String msg = properties.getProperty("emptyFieldMsg");
+		if (msg != null)
+			return msg;
+		else
+			throw new RuntimeException("emptyFieldMsg not specified in the Configuration.properties file.");
+	}
 
+	public String getInvalidCredsMsg() {
+		String msg = properties.getProperty("invalidCredsMsg");
+		if (msg != null)
+			return msg;
+		else
+			throw new RuntimeException("invalidCredsMsg not specified in the Configuration.properties file.");
+	}
 
+	public String getInvalidUserName() {
+		String username = properties.getProperty("invalidUserName");
+		if (username != null)
+			return username;
+		else
+			throw new RuntimeException("invalidUserName not specified in the Configuration.properties file.");
+	}
+	
+	public String getInvalidPassword() {
+		String password = properties.getProperty("invalidPassword");
+		if (password != null)
+			return password;
+		else
+			throw new RuntimeException("invalidPassword not specified in the Configuration.properties file.");
+	}
 }

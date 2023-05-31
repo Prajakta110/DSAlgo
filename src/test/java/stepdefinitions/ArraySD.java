@@ -25,7 +25,6 @@ public class ArraySD {
 	ArrayPage arrayPage;
 	EditorPage editorPage;
 	PracticePage practicePage;
-	String output;
 	
 	public ArraySD(TestContext context)
 	{

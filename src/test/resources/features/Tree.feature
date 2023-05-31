@@ -4,11 +4,11 @@ Feature: To Validate Tree Page
   Background: User is on Home Page
     Given User is on DS Algo Home page
     
-    Scenario: The user is logged in to DS Algo portal
-  	Given The user is on Signin page of DS Algo portal
-    When The user enter valid "sonali" and "Dsalgo@1"
-    And The user click on login button
-   Then The user redirected to homepage
+    Scenario: User is logged in
+    When User clicks on Sign in button on Home page
+    And User enters valid username and password
+    And User clicks on Sign in
+    Then User should be able to see the logged in message
 
   Scenario: To validate the Tree link
     When User click on the Tree Get Started button
@@ -24,19 +24,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "Tree" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute valid python code
+  Scenario Outline: The user able to execute valid python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+     Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user navigate to "Terminologies" Page
     Given The user is on the "Tree" page
@@ -48,19 +52,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "Terminologies" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user navigate to "Types of Trees" Page
     Given The user is on the "Tree" page
@@ -72,19 +80,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "types of tree" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to "Tree Traversals" Page
     Given The user is on the "Tree" page
@@ -96,19 +108,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "tree traversals" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to "Traversals illustration" Page
     Given The user is on the "Tree" page
@@ -120,19 +136,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "traversal illustration" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+     Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to "Binary trees" Page
     Given The user is on the "Tree" page
@@ -144,19 +164,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "binary tree" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+     Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to "Types of Binary trees" Page
     Given The user is on the "Tree" page
@@ -168,19 +192,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "types of binary trees" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to Implementation in Python Page
     Given The user is on the "Tree" page
@@ -192,19 +220,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "implementation in python" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to binary tree traversals Page
     Given The user is on the "Tree" page
@@ -216,19 +248,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "binary tree traversals" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to Implementation of Binary Trees Page
     Given The user is on the "Tree" page
@@ -240,19 +276,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "Implementation of binary trees" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to Applications of Binary Trees Page
     Given The user is on the "Tree" page
@@ -264,19 +304,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "Applications of binary trees" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to "Binary Search Trees" Page
     Given The user is on the "Tree" page
@@ -288,19 +332,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "Binary Search Trees" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user is able to navigate to "Implementation of BST" Page
     Given The user is on the "Tree" page
@@ -312,19 +360,23 @@ Feature: To Validate Tree Page
     When The user clicks "Try Here" button on "Implementation of BST" page
     Then The user should be redirected to tryEditor page with Run button
 
-  Scenario: The user able to execute python code
+  Scenario Outline: The user able to execute python code
     Given The User is on try editor page with run button
-    When User enter the Python code
-      | print"Hello Numpy Ninjas" |
-    And User Clicks on Run button
+    When User enter the Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the Result
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         0 |
 
-  Scenario: The user able to execute invalid python code
+  Scenario Outline: The user able to execute invalid python code
     Given The User is on try editor page with run button
-    When User enter the invalid Python code
-      | print Hello Numpy Ninjas |
-    And User Clicks on Run button
+    When User enter the invalid Python code from sheet "<sheetName>" rownumber <rownumber>
     Then User Verify the error message
+    
+    Examples: 
+      | sheetName  | rownumber |
+      | pythonCode |         1 |
 
   Scenario: The user validating "Practice Questions" page
     Given The user is on the "Tree" page

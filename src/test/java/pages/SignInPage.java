@@ -75,23 +75,19 @@ public class SignInPage {
 		return successMsg;
 	}
 
-	public String InvalidAlert() {
+	public void VerifyInvalidAlert() {
 		String alertMessage = alertMsg.getText();
-		return alertMessage;
+		Assert.assertEquals(alertMessage, FileReaderManager.getInstance().getConfigReader().getInvalidCredsMsg());
 	}
 
-	public String ValidateUsernamefield(String validationMessge) {
+	public void ValidateUsernamefield() {
 		String message = username.getAttribute("validationMessage");
-		System.out.println("message");
-		return message;
-
+		Assert.assertEquals(message, FileReaderManager.getInstance().getConfigReader().getEmptyFieldMsg());
 	}
 
-	public String ValidatePasswordfield(String validationMessge) {
+	public void ValidatePasswordfield() {
 		String message = password.getAttribute("validationMessage");
-		System.out.println("message");
-		return message;
-
+		Assert.assertEquals(message, FileReaderManager.getInstance().getConfigReader().getEmptyFieldMsg());
 	}
 
 	public void ClickOnRegister() {

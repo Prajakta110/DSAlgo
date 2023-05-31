@@ -1,7 +1,5 @@
 package stepdefinitions;
 
-import static org.testng.Assert.assertEquals;
-
 import java.util.List;
 import java.util.Map;
 
@@ -99,13 +97,11 @@ public class SignInSD {
 	    
 	}
 
-	//review
-	@Then("User verify the message at username as {string}")
-	public void user_verify_the_message_at_username_as(String string) {
+	@Then("User verify the message at username")
+	public void user_verify_the_message_at_username() {
 		try
 		{
-			String text= signinPage.ValidateUsernamefield(string);
-			assertEquals(text,"Please fill out this field.");	
+			signinPage.ValidateUsernamefield();	
 			Log.endTestCase();
 		}
 		catch(Exception ex)
@@ -114,12 +110,11 @@ public class SignInSD {
 		}
 	}
 
-	//review
-	@When("User clicks on login button with username as {string} only")
-	public void user_clicks_on_login_button_with_username_as_only(String numpy) {
+	@When("User clicks on login button with username only")
+	public void user_clicks_on_login_button_with_username_only() {
 		try
 		{
-		signinPage.EnterUserName(numpy);
+			signinPage.EnterUserName(FileReaderManager.getInstance().getConfigReader().getDSAlgoUserName());
 		}
 		catch(Exception ex)
 		{
@@ -128,13 +123,11 @@ public class SignInSD {
 	    
 	}
 
-	//review
-	@Then("User verify the message at password as {string}")
-	public void user_verify_the_message_at_password_as(String numpy) {
+	@Then("User verify the message at password")
+	public void user_verify_the_message_at_password() {
 		try
 		{
-			String text= signinPage.ValidatePasswordfield(numpy);
-			assertEquals(text,"Please fill out this field.");
+			signinPage.ValidatePasswordfield();
 			Log.endTestCase();
 		}
 		catch(Exception ex)
@@ -143,11 +136,11 @@ public class SignInSD {
 		}
 	}
 
-	@When("User clicks on login button with password as {string} only")
-	public void user_clicks_on_login_button_with_password_as_only(String string) {
+	@When("User clicks on login button with password only")
+	public void user_clicks_on_login_button_with_password_only() {
 		try
 		{
-			signinPage.EnterPassword(string);
+			signinPage.EnterPassword(FileReaderManager.getInstance().getConfigReader().getDSAlgoPassword());
 		}
 		catch(Exception ex)
 		{
@@ -155,12 +148,11 @@ public class SignInSD {
 		}
 	}
 
-	@Then("User verify the message at user as {string}")
-	public void user_verify_the_message_at_user_as(String string) {
+	@Then("User verify the message at user")
+	public void user_verify_the_message_at_user() {
 		try
 		{
-			String text= signinPage.ValidateUsernamefield(string);
-			assertEquals(text,"Please fill out this field.");
+			signinPage.ValidateUsernamefield();
 			Log.endTestCase();
 		}
 		catch(Exception ex)
@@ -169,11 +161,11 @@ public class SignInSD {
 		}
 	}
 
-	@When("User enters username as {string}")
-	public void user_enters_username_as(String username) {
+	@When("User enters invalid username")
+	public void user_enters_invalid_username() {
 		try
 		{
-			signinPage.EnterUserName(username);
+			signinPage.EnterUserName(FileReaderManager.getInstance().getConfigReader().getInvalidUserName());
 		}
 		catch(Exception ex)
 		{
@@ -181,11 +173,11 @@ public class SignInSD {
 		}
 	}
 
-	@When("User enters password as {string}")
-	public void user_enters_password_as(String password) {
+	@When("User enters invalid password")
+	public void user_enters_invalid_password() {
 		try
 		{
-			signinPage.EnterPassword(password);
+			signinPage.EnterPassword(FileReaderManager.getInstance().getConfigReader().getInvalidPassword());
 		}
 		catch(Exception ex)
 		{
@@ -205,14 +197,11 @@ public class SignInSD {
 		}
 	}
 	
-	//review
-	@Then("User verify the message as {string}")
-	public void user_verify_the_message_as(String string) {
+	@Then("User verify the message")
+	public void user_verify_the_message() {
 		try
 		{
-			String alertmsg =signinPage.InvalidAlert();
-			Log.info("The actual Alert is:" +alertmsg);
-			assertEquals(alertmsg, string);
+			signinPage.VerifyInvalidAlert();
 			Log.endTestCase();
 		}
 		catch(Exception ex)
@@ -231,7 +220,6 @@ public class SignInSD {
 			username = testdata.get(RowNumber).get("UserName");
 			password = testdata.get(RowNumber).get("Password");
 			
-			Log.info("User Enter username as \" " + username + " \"and Password as \" " + password + "\" ");
 			if (username != null || password != null)
 				signinPage.EnterUserName(username);
 			    signinPage.EnterPassword(password);
@@ -255,12 +243,11 @@ public class SignInSD {
 		}
 	}
 
-	//review
-	@Then("It should navigate to the home page with a message {string}")
-	public void it_should_navigate_to_the_home_page_with_a_message(String string) {
+	@Then("It should navigate to the home page with a successful login message")
+	public void it_should_navigate_to_the_home_page_with_a_successgul_login_message() {
 		try
 		{
-			signinPage.SuccessAlert();
+			homePage.VerifyLoginSuccessMsg();
 			Log.endTestCase();
 		}
 		catch(Exception ex)
